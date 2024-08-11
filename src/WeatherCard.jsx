@@ -112,14 +112,14 @@ const WeatherCard = () => {
   const weatherIcon = weatherIcons[weatherDescription] || defaultIcon;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-500">
-      <div className="bg-white shadow-lg rounded-lg p-2 flex flex-col justify-center items-center">
+    <div className="flex flex-row md:flex-col items-center justify-center  ">
+      <div className="bg-white  rounded-lg md:p-2 flex flex-row md:flex-col justify-center items-center">
 
 
-        <p className="text-lg mt-2 bg-red-100">
+        <p className="text-xs md:text-lg mt-2 ">
           {temperature !== null ? `${temperature} °F` : 'Loading...'}
         </p>
-        <p className="text-3xl mt-0 flex items-center bg-green-100 h-fit">
+        <p className="text-xs md:text-3xl  mt-0 flex items-center h-fit">
           {weatherIcon}
         </p>
         {error && <p className="text-red-500 mt-2">{error}</p>}

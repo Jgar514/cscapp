@@ -8,7 +8,7 @@ const Model = (props) => {
   const { scene } = useGLTF(modelPath); // Load the model
 
   return (
-    <group ref={groupRef} {...props} position={[0, 0, 0]} scale={[1, 1, 1]}>
+    <group ref={groupRef} {...props} position={[0, 0, 0]} scale={[1.3, 1.3, 1.3]}>
       <primitive object={scene} /> {/* Add the loaded model to the scene */}
     </group>
   );
