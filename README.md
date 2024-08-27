@@ -15,6 +15,7 @@ Brief description of the project.
     <td style="width:300px; height:200px; border:1px solid black; text-align:center;">
       <strong>Cell 2</strong><br>
       Content for cell 2.
+      Test with more content in one then others 
     </td>
   </tr>
   <tr>
