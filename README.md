@@ -1,28 +1,38 @@
-### Boat Ramp
+# Quadrant Overview
 
-<div style="display: flex; align-items: center;">
-  <img src="./src/assets/detail-images/boatramp.png" alt="Boat Ramp" style="width: 100px; height: auto; margin-right: 20px;">
-  <pre>
-{
-  name: 'Boat Ramp',
-  imageSrc: 'path/to/boat-ramp-image.jpg',
-  website: 'https://cscia.org/cscia-services/boat-slips-information/',
-  description: 'This is a detailed description of the boat ramp. It provides extensive information about its history and services.',
-  hours: [
-    'Monday: 9:00 AM - 5:00 PM',
-    'Tuesday: 9:00 AM - 5:00 PM',
-    'Wednesday: 9:00 AM - 5:00 PM',
-    'Thursday: 9:00 AM - 5:00 PM',
-    'Friday: 9:00 AM - 5:00 PM',
-    'Saturday: Closed',
-    'Sunday: Closed'
-  ],
-  relatedKeywords: ['boat ramp', 'history', 'services'],
-  cameraPosition: [15, 0, 25],
-  orbitTarget: [15, 0, 0],
-  fov: 80,
-  color: '#0000ff',
-  secondaryColor: '#ff00ff'
-}
-  </pre>
-</div>
+<table>
+  <tr>
+    <td>
+      <h2 id="quadrant-2">Quadrant 2</h2>
+      <ul>
+        <li><a href="#boat-ramp">Boat Ramp</a></li>
+      </ul>
+    </td>
+    <td>
+      <h2 id="quadrant-1">Quadrant 1</h2>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h2 id="quadrant-4">Quadrant 4</h2>
+    </td>
+    <td>
+      <h2 id="quadrant-3">Quadrant 3</h2>
+    </td>
+  </tr>
+</table>
+
+## Quadrant 1
+*Details or content for Quadrant 1*
+
+## Quadrant 2
+*Details or content for Quadrant 2*
+
+## Boat Ramp
+*Details about Boat Ramp*
+
+## Quadrant 3
+*Details or content for Quadrant 3*
+
+## Quadrant 4
+*Details or content for Quadrant 4*
