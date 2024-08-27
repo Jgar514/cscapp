@@ -1,49 +1,26 @@
-# Quadrant Overview
+# Project Name
 
-## Quadrant 1
-- [Main Beach](#main-beach)
-- [Cape Clubhouse](#cape-clubhouse)
+## Overview
 
-## Quadrant 2
-- [Boat Ramp](#boat-ramp)
+Brief description of the project.
 
-## Quadrant 3
-- [Quadrant Overview](#quadrant-overview)
-  - [Quadrant 1](#quadrant-1)
-  - [Quadrant 2](#quadrant-2)
-  - [Quadrant 3](#quadrant-3)
-  - [Quadrant 4](#quadrant-4)
-    - [Main Beach](#main-beach)
-    - [Cape Clubhouse](#cape-clubhouse)
-    - [Boat Ramp](#boat-ramp)
-    - [Quadrant 3](#quadrant-3-1)
-    - [Quadrant 4](#quadrant-4-1)
+## Table
 
-## Quadrant 4
-- [Quadrant Overview](#quadrant-overview)
-  - [Quadrant 1](#quadrant-1)
-  - [Quadrant 2](#quadrant-2)
-  - [Quadrant 3](#quadrant-3)
-  - [Quadrant 4](#quadrant-4)
-    - [Main Beach](#main-beach)
-    - [Cape Clubhouse](#cape-clubhouse)
-    - [Boat Ramp](#boat-ramp)
-    - [Quadrant 3](#quadrant-3-1)
-    - [Quadrant 4](#quadrant-4-1)
-
----
-
-### Main Beach
-*Details about Main Beach*
-
-### Cape Clubhouse
-*Details about Cape Clubhouse*
-
-### Boat Ramp
-*Details about Boat Ramp*
-
-### Quadrant 3
-*Details or content for Quadrant 3*
-
-### Quadrant 4
-*Details or content for Quadrant 4*
+<table style="width:100%; height:200px; border-collapse:collapse;">
+  <tr>
+    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
+      <!-- Cell 1 Content -->
+    </td>
+    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
+      <!-- Cell 2 Content -->
+    </td>
+  </tr>
+  <tr>
+    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
+      <!-- Cell 3 Content -->
+    </td>
+    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
+      <!-- Cell 4 Content -->
+    </td>
+  </tr>
+</table>
