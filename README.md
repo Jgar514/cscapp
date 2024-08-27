@@ -1,8 +1,8 @@
 # Quadrant Overview
 
-<table>
-  <tr>
-    <td valign="top">
+<table style="width: 100%; table-layout: fixed;">
+  <tr style="height: 200px;">
+    <td style="width: 50%; vertical-align: top; height: 100%;">
       <ul>
         <li><a href="#quadrant-2">Quadrant 2</a>
           <ul>
@@ -11,7 +11,7 @@
         </li>
       </ul>
     </td>
-    <td valign="top">
+    <td style="width: 50%; vertical-align: top; height: 100%;">
       <ul>
         <li><a href="#quadrant-1">Quadrant 1</a>
           <ul>
@@ -22,13 +22,13 @@
       </ul>
     </td>
   </tr>
-  <tr>
-    <td valign="top">
+  <tr style="height: 200px;">
+    <td style="width: 50%; vertical-align: top; height: 100%;">
       <ul>
         <li><a href="#quadrant-4">Quadrant 4</a></li>
       </ul>
     </td>
-    <td valign="top">
+    <td style="width: 50%; vertical-align: top; height: 100%;">
       <ul>
         <li><a href="#quadrant-3">Quadrant 3</a></li>
       </ul>
