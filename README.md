@@ -2,26 +2,36 @@
 
 <table>
   <tr>
-    <td style="vertical-align: top;">
-      <h2 id="quadrant-2">Quadrant 2</h2>
+    <td valign="top">
       <ul>
-        <li><a href="#boat-ramp">Boat Ramp</a></li>
+        <li><a href="#quadrant-2">Quadrant 2</a>
+          <ul>
+            <li><a href="#boat-ramp">Boat Ramp</a></li>
+          </ul>
+        </li>
       </ul>
     </td>
-    <td style="vertical-align: top;">
-      <h2 id="quadrant-1">Quadrant 1</h2>
+    <td valign="top">
       <ul>
-        <li><a href="#main-beach">Main Beach</a></li>
-        <li><a href="#cape-clubhouse">Cape Clubhouse</a></li>
+        <li><a href="#quadrant-1">Quadrant 1</a>
+          <ul>
+            <li><a href="#main-beach">Main Beach</a></li>
+            <li><a href="#cape-clubhouse">Cape Clubhouse</a></li>
+          </ul>
+        </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align: top;">
-      <h2 id="quadrant-4">Quadrant 4</h2>
+    <td valign="top">
+      <ul>
+        <li><a href="#quadrant-4">Quadrant 4</a></li>
+      </ul>
     </td>
-    <td style="vertical-align: top;">
-      <h2 id="quadrant-3">Quadrant 3</h2>
+    <td valign="top">
+      <ul>
+        <li><a href="#quadrant-3">Quadrant 3</a></li>
+      </ul>
     </td>
   </tr>
 </table>
