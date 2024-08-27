@@ -6,21 +6,25 @@ Brief description of the project.
 
 ## Table
 
-<table style="width:100%; height:200px; border-collapse:collapse;">
+<table>
   <tr>
-    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
-      <!-- Cell 1 Content -->
+    <td style="width:300px; height:200px; border:1px solid black; text-align:center;">
+      <strong>Cell 1</strong><br>
+      Content for cell 1.
     </td>
-    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
-      <!-- Cell 2 Content -->
+    <td style="width:300px; height:200px; border:1px solid black; text-align:center;">
+      <strong>Cell 2</strong><br>
+      Content for cell 2.
     </td>
   </tr>
   <tr>
-    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
-      <!-- Cell 3 Content -->
+    <td style="width:300px; height:200px; border:1px solid black; text-align:center;">
+      <strong>Cell 3</strong><br>
+      Content for cell 3.
     </td>
-    <td style="width:50%; height:50%; border:1px solid black; text-align:center;">
-      <!-- Cell 4 Content -->
+    <td style="width:300px; height:200px; border:1px solid black; text-align:center;">
+      <strong>Cell 4</strong><br>
+      Content for cell 4.
     </td>
   </tr>
 </table>
