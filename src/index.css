@@ -1,3 +1,24 @@
 @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fly-across {
+    0% {
+        transform: translateX(100vw) rotate(180deg);
+        /* Start offscreen to the right */
+    }
+
+    100% {
+        transform: translateX(-100vw) rotate(180deg);
+        /* End offscreen to the left */
+    }
+}
+
+.fly-jet {
+    animation: fly-across 5s linear forwards;
+    /* Runs once */
+    position: absolute;
+    top: 15%;
+    font-size: 100px;
+    /* Adjust size as needed */
+}
