@@ -2,13 +2,13 @@
 
 <table>
   <tr>
-    <td>
+    <td style="vertical-align: top;">
       <h2 id="quadrant-2">Quadrant 2</h2>
       <ul>
         <li><a href="#boat-ramp">Boat Ramp</a></li>
       </ul>
     </td>
-    <td>
+    <td style="vertical-align: top;">
       <h2 id="quadrant-1">Quadrant 1</h2>
       <ul>
         <li><a href="#main-beach">Main Beach</a></li>
@@ -17,10 +17,10 @@
     </td>
   </tr>
   <tr>
-    <td>
+    <td style="vertical-align: top;">
       <h2 id="quadrant-4">Quadrant 4</h2>
     </td>
-    <td>
+    <td style="vertical-align: top;">
       <h2 id="quadrant-3">Quadrant 3</h2>
     </td>
   </tr>
