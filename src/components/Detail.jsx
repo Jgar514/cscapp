@@ -1,6 +1,8 @@
 // src/DetailPage.jsx
 import React from 'react';
 import { useState } from 'react';
+import CscElem from '../quadrant4/CscElem';
+import { Canvas } from '@react-three/fiber';
 
 const DetailPage = ({ onClose, showDetail, selectedLocation }) => {
   if (!selectedLocation) {
@@ -19,7 +21,6 @@ const DetailPage = ({ onClose, showDetail, selectedLocation }) => {
       className={`fixed top-0 right-0 w-full md:w-1/2 h-full bg-white z-40 pt-8 transform transition-transform ease-in-out cursor-default ${showDetail ? 'translate-y-0 duration-1000' : '-translate-y-full duration-1000'
         }`}
     >
-
 
 
       <div className="bg-white pt-20 px-6 rounded-lg shadow-lg w-full h-full overflow-y-auto flex flex-col">

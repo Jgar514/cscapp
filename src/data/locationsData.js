@@ -19,13 +19,12 @@ const locationsData = [
     ],
     relatedKeywords: ['Business', 'Services', 'History', 'Mission'],
     cameraPosition: [0, 2.5, 5],
-    orbitTarget: [0, 0, 0],  // Coordinates for Bay
+    orbitTarget: [0, 0, 0],
     fov: 50,
     color: '#1e90ff',
     secondaryColor: '#87ceeb',
   },
   {
-
     name: 'Boat Ramp',
     imageSrc: boatrampImage, // Replace with your image source
     website: 'https://cscia.org/cscia-services/boat-slips-information/',
@@ -41,7 +40,9 @@ const locationsData = [
     ],
     relatedKeywords: ['Business', 'Services', 'History', 'Mission'],
     cameraPosition: [-2.5, .5, -1],
-    orbitTarget: [-1.7, -.04, -.45],  // Coordinates for Boat Ramp
+    orbitTarget: [-1.7, -.04, -.45],
+    cameraPosition2: [-2.5, .5, -1],
+    orbitTarget2: [-1.7, -.04, -.45],
     fov: 30,
     color: '#2e8b57',
     secondaryColor: '#3cb371',
@@ -65,6 +66,8 @@ const locationsData = [
 
     cameraPosition: [-1, .5, 2],
     orbitTarget: [-.7, 0, .9],  // Coordinates for Broadneck High School
+    cameraPosition2: [-1, .5, 2],
+    orbitTarget2: [-.7, 0, .7],
     fov: 30,
     color: '#8b0000',
     secondaryColor: '#ff6347',
@@ -75,7 +78,10 @@ const locationsData = [
     name: 'Broadneck Library',
     imageSrc: broadneckImage,
     cameraPosition: [0, 2.5, 5],
-    orbitTarget: [-.7, 0, .9],  // Coordinates for Broadneck Park
+    orbitTarget: [-.7, 0, .9],
+    cameraPosition2: [0.5, 2.5, -1],
+    orbitTarget2: [1.7, -0.055, -0.35],
+    detailFov: 50,
     maxDistance: 10,
     color: '#228b22',
     secondaryColor: '#32cd32',
@@ -110,6 +116,9 @@ const locationsData = [
     cameraPosition: [.5, 2.5, -1],
     orbitTarget: [1.7, -.055, -.35],  // Coordinates for Cape Clubhouse
     fov: 50,
+    cameraPosition2: [.5, 2.5, -1],
+    orbitTarget2: [1.7, -.055, -.35],
+
     color: '#4682b4',
     secondaryColor: '#5f9ea0',
     keywords: ['clubhouse', 'community', 'gathering'],
@@ -120,7 +129,9 @@ const locationsData = [
     name: 'Cape Elementary School',
     imageSrc: cscelemImage,
     cameraPosition: [.5, .5, 0],
-    orbitTarget: [.33, .025, 1],  // Coordinates for Cape Elementary School
+    orbitTarget: [.33, .025, 1],
+    cameraPosition2: [.5, .5, 0],
+    orbitTarget2: [.33, .025, 1],
     fov: 30,
     color: '#4682B4',
     secondaryColor: '#ffa500',
@@ -137,7 +148,9 @@ const locationsData = [
   {
     name: 'Cape Field',
     cameraPosition: [1.5, 1.5, .5],
-    orbitTarget: [1.0, -.008, 1],  // Coordinates for Cape Field
+    orbitTarget: [1.0, -.008, 1],
+    cameraPosition2: [1.5, 1.5, .5],
+    orbitTarget2: [1.0, -.008, 1],
     fov: 50,
     color: '#556b2f',
     secondaryColor: '#6b8e23',
@@ -151,12 +164,12 @@ const locationsData = [
     imageSrc: firedeptImage,
     cameraPosition: [0, .5, .8],
     orbitTarget: [.8, 0.028, 1.5],
-    fov: 10,
+    cameraPosition2: [0, .5, .8],
+    orbitTarget2: [.8, 0.028, 1.5],
+    fov: 6,
     color: '#BC4A3C',
     secondaryColor: '#BC4A3C',
-
     website: 'https://www.cscvfc.org/',
-    punchlist: ['detail - color, flag, sign', 'add a target', ''],
     description: `At a meeting held on March 25, 1955, residents of the Broadneck Peninsula gathered at the Cape St. Claire Clubhouse and voted to organize as the Cape St. Claire Volunteer Fire Association. By May of the same year, the "Association" had changed its name to The Cape St. Claire Volunteer Fire Company, Inc. (CSCVFC), and purchased a 1936 Chevrolet fire engine from the Ferndale Volunteer Fire Department at a cost of $1,800.00.
 
     By May 1956, a piece of property along Hunt Club/Persimmon Point Road (now Cape St. Claire Road) was presented to the Fire Company by the Cape St. Claire Maintenance Corporation. The property was cleared by the members with help from their neighbors.
@@ -178,6 +191,8 @@ const locationsData = [
     imageSrc: shopsImage,
     cameraPosition: [3, .5, 2],
     orbitTarget: [1.0, -.008, 1],
+    cameraPosition2: [3, .5, 2],
+    orbitTarget2: [1.0, -.008, 1],
     fov: 10,
     color: "green",
     secondaryColor: '#9370db',
@@ -231,25 +246,27 @@ const locationsData = [
     punchlist: ['', '', ''],
     description: 'Deep Creek is a serene waterway surrounded by natural beauty, offering a peaceful escape from the hustle and bustle.'
   },
-  {
-    name: 'Floor',
-    cameraPosition: [0, 2.5, 5],
-    orbitTarget: [0, 0, 0],  // Coordinates for Floor
-    fov: 50,
-    color: '#a9a9a9',
-    secondaryColor: '#d3d3d3',
-    keywords: ['floor', 'ground', 'surface'],
-    link: 'https://example.com/floor',
-    punchlist: ['', '', ''],
-    description: 'The floor area serves as the foundation for various structures and activities, providing a stable and reliable surface.'
-  },
+  // {
+  //   name: 'Floor',
+  //   cameraPosition: [0, 2.5, 5],
+  //   orbitTarget: [0, 0, 0],  // Coordinates for Floor
+  //   fov: 50,
+  //   color: '#a9a9a9',
+  //   secondaryColor: '#d3d3d3',
+  //   keywords: ['floor', 'ground', 'surface'],
+  //   link: 'https://example.com/floor',
+  //   punchlist: ['', '', ''],
+  //   description: 'The floor area serves as the foundation for various structures and activities, providing a stable and reliable surface.'
+  // },
   {
     name: 'Goshen Farm',
     imageSrc: goshenfarmImage,
     description: 'Goshen Farm is a historic landmark, preserving the rich agricultural heritage of the region with its historic structures and landscapes.',
     website: "https://goshenfarm.org/",
     cameraPosition: [0, .5, 2.25],
-    orbitTarget: [.37, 0.062, 1.3],  // Coordinates for Goshen Farm
+    orbitTarget: [.37, 0.062, 1.3],
+    cameraPosition2: [0, .5, 2.25],
+    orbitTarget2: [.37, 0.062, 1.3],
     fov: 8,
     color: '#654321',
     secondaryColor: '#a0522d',
@@ -260,7 +277,9 @@ const locationsData = [
     name: 'Guard Tower',
     imageSrc: guardtowerImage,
     cameraPosition: [.2, .5, 1.3],
-    orbitTarget: [.9, 0.04, 1.3],  // Coordinates for Goshen Farm
+    orbitTarget: [.9, 0.04, 1.3],
+    cameraPosition2: [.2, .5, 1.3],
+    orbitTarget2: [.9, 0.04, 1.3],
     fov: 8,
     color: '#654321',
     secondaryColor: '#a0522d',
@@ -298,9 +317,11 @@ const locationsData = [
   // },
   {
     name: 'Lake Claire',
-    imageSrc: lakeclaireImage, // combine with lake claire beach
+    imageSrc: lakeclaireImage,
     cameraPosition: [0, 2.5, 5],
-    orbitTarget: [-.4, -.055, -1],  // Coordinates for Lake Claire
+    orbitTarget2: [-.4, -.055, -1],
+    cameraPosition2: [0, 2.5, 5],
+    orbitTarget: [-.4, -.055, -1],
     fov: 50,
     color: '#FFFFC5',
     secondaryColor: '#5f9ea0',
@@ -313,8 +334,10 @@ const locationsData = [
     name: 'Latrobe',  // Change to Lake Claire Beach
     imageSrc: littlebeachImage,
     cameraPosition: [-2, 1, -3],
-    orbitTarget: [-.4, -.055, -1],  // Coordinates for Latrobe
-    fov: 10,
+    orbitTarget: [-.4, -.055, -1],
+    cameraPosition2: [-2, 1, -3],
+    orbitTarget2: [-.4, -.055, -1],
+    fov: 7,
     color: '#FFFFC5',
     secondaryColor: '#ff8c00',
     keywords: ['latrobe', 'historic', 'site'],
@@ -340,7 +363,9 @@ const locationsData = [
     imageSrc: mainbeachImage,
     website: "https://cscia.org/cscia-services/beaches/",
     cameraPosition: [2.7, .5, -1.0],
-    orbitTarget: [1.7, -.055, -.35],  // Coordinates for Main Beach
+    orbitTarget: [1.7, -.055, -.35],
+    cameraPosition2: [2.7, .5, -1.0],
+    orbitTarget2: [1.7, -.055, -.35],
     fov: 20,
     color: '#EFDD6F',
     secondaryColor: '#ff6347',
@@ -351,7 +376,9 @@ const locationsData = [
     imageSrc: standrewsImage,
     website: ' https://www.standrewbythebay.org/ ',
     cameraPosition: [-1, .5, 2],
-    orbitTarget: [-.27, .02, 2.15],  // Coordinates for St Andrews Church
+    orbitTarget: [-.27, .02, 2.15],
+    cameraPosition2: [-1, .5, 2],
+    orbitTarget2: [-.27, .02, 2.15],
     fov: 20,
     color: '#ffd700',
     secondaryColor: '#7b68ee',

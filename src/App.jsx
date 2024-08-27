@@ -43,6 +43,7 @@ const App = () => {
   const [backgroundColor, setBackgroundColor] = useState('');
   const [orbitTarget, setOrbitTarget] = useState([0, -1, 0]);
   const [streetsOpacity, setStreetsOpacity] = useState(1);
+  const [hovered, setHovered] = useState(false);
   const resetAppState = () => {
     setCameraPosition([0, 2.5, 5]);
     setFov(50);
@@ -139,6 +140,38 @@ const App = () => {
     }
   };
 
+  const handleMoreInfoClick = () => {
+    const location = locationsData.find(loc => loc.name === selectedLocation);
+    if (location) {
+      setOrbitTarget(location.orbitTarget2);
+      setCameraPosition(location.cameraPosition2);
+      // Update fov for detail view
+
+
+
+      if (orbitControlsRef.current) {
+        orbitControlsRef.current.update(); // Update controls to apply the new settings
+      }
+    }
+  };
+
+  const handleLessInfoClick = () => {
+    const location = locationsData.find(loc => loc.name === selectedLocation);
+    if (location) {
+      setOrbitTarget(location.orbitTarget);
+      setCameraPosition(location.cameraPosition2);
+      // Update fov for detail view
+
+
+
+      if (orbitControlsRef.current) {
+        orbitControlsRef.current.update(); // Update controls to apply the new settings
+      }
+    }
+  };
+
+
+
   useEffect(() => {
     if (orbitControlsRef.current) {
       const camera = orbitControlsRef.current.object;
@@ -156,6 +189,8 @@ const App = () => {
 
 
 
+
+
   const handleCubeClick = () => {
     setShowDetail(true);
   };
@@ -163,6 +198,8 @@ const App = () => {
   const handleCloseDetail = () => {
     setShowDetail(false);
   };
+
+
 
   return (
     <div className="w-full h-screen relative flex flex-col">
@@ -174,6 +211,7 @@ const App = () => {
           <div className=' text-xs md:text-4xl font-mono font-bold  h-fit text-black flex md:items-center justify-center w-full md:w-fit'>
             <WeatherCard />
           </div>
+
         </div>
         <div className='h-1/2 w-full md:w-1/2  md:h-full  flex flex-col items-center justify-center '>
           <LocationInfo
@@ -181,8 +219,12 @@ const App = () => {
             backgroundColor={backgroundColor}
             setShowDetail={setShowDetail}
             setSelectedLocation={setSelectedLocation}
-            resetAppState={resetAppState} // Pass the reset function
+            resetAppState={resetAppState}
+            handleMoreInfoClick={handleMoreInfoClick}
+            handleLessInfoClick={handleLessInfoClick} // Pass the function to reset camera settings
           />
+
+
         </div>
         {/*  */}
       </div>
@@ -273,10 +315,16 @@ const App = () => {
           {/* End Firehouse */}
 
           {/* Start Guard Tower */}
-          <spotLight ref={spotLight10} position={[.9, 1, 1.3]} angle={Math.PI / 45} penumbra={0.2} intensity={4} distance={50} decay={2} castShadow />
-          <mesh ref={tenthTargetRef} position={[.9, 0.029, 1.3]} onClick={() => handleMeshClick('Guard Tower')}>
-            <boxGeometry args={[.09, 0.01, .09]} />
-            <meshStandardMaterial color="white" opacity={.9} />
+          <spotLight ref={spotLight10} position={[0.9, 1, 1.3]} angle={Math.PI / 45} penumbra={0.2} intensity={4} distance={50} decay={2} castShadow />
+          <mesh
+            ref={tenthTargetRef}
+            position={[0.9, 0.029, 1.3]}
+            onClick={() => handleMeshClick('Guard Tower')}
+            onPointerOver={() => setHovered(true)}
+            onPointerOut={() => setHovered(false)}
+          >
+            <boxGeometry args={[0.09, 0.01, 0.09]} />
+            <meshStandardMaterial color="white" opacity={hovered ? 0.9 : 0.2} transparent />
           </mesh>
           {/* End Guard Tower */}
 
