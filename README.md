@@ -5,12 +5,15 @@
     <td>
       <h2 id="quadrant-2">Quadrant 2</h2>
       <ul>
-        <li><a href="#main-beach-and-cape-clubhouse">Main Beach and Cape Clubhouse</a></li>
         <li><a href="#boat-ramp">Boat Ramp</a></li>
       </ul>
     </td>
     <td>
       <h2 id="quadrant-1">Quadrant 1</h2>
+      <ul>
+        <li><a href="#main-beach">Main Beach</a></li>
+        <li><a href="#cape-clubhouse">Cape Clubhouse</a></li>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -26,11 +29,14 @@
 ## Quadrant 1
 *Details or content for Quadrant 1*
 
+### Main Beach
+*Details about Main Beach*
+
+### Cape Clubhouse
+*Details about Cape Clubhouse*
+
 ## Quadrant 2
 *Details or content for Quadrant 2*
-
-### Main Beach and Cape Clubhouse
-*Details about Main Beach and Cape Clubhouse*
 
 ### Boat Ramp
 *Details about Boat Ramp*
