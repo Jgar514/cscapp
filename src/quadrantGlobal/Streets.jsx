@@ -1,16 +1,17 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import streetsModelPath from '../assets/streets16.glb';
+import streetsModelPath from '../assets/streets18.glb';
 
-const Streets = ({ opacity, ...props }) => {  // Accept opacity as a prop
+const Streets = (props) => {
   const groupRef = useRef();
   const { scene } = useGLTF(streetsModelPath);
 
-  // Apply the opacity to all meshes in the scene
+  // Traverse the scene to ensure all materials are set up correctly
   scene.traverse((child) => {
     if (child.isMesh) {
-      child.material.transparent = true;
-      child.material.opacity = opacity;
+      // Remove the opacity logic since it's no longer needed
+      child.material.transparent = false; // Ensure transparency is disabled if not needed
+      child.material.opacity = 1; // Set opacity to 1 (fully opaque)
     }
   });
 

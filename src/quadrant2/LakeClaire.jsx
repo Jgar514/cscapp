@@ -1,21 +1,13 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
-import lakeClaireModelPath from '../assets/lakeclaire3.glb';
+import lakeClaireModelPath from '../assets/lakeclaire.glb';
 
 const LakeClaire = (props) => {
   const groupRef = useRef();
   const { scene } = useGLTF(lakeClaireModelPath);
 
-  // Create a material using a hex code
-  const material = new THREE.MeshStandardMaterial({ color: '#91DAEE' }); // Light blue color
-
-  // Apply the material to all meshes in the scene
-  scene.traverse((child) => {
-    if (child.isMesh) {
-      child.material = material;
-    }
-  });
+  // Log the scene to confirm the model is loaded
+  console.log(scene);
 
   return (
     <group ref={groupRef} {...props}>

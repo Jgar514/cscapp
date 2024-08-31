@@ -190,7 +190,7 @@ const locationsData = [
     name: 'Cape Shopping Center',
     imageSrc: shopsImage,
     cameraPosition: [3, .5, 2],
-    orbitTarget: [1.0, -.008, 1],
+    orbitTarget: [1.0, .05, 1],
     cameraPosition2: [3, .5, 2],
     orbitTarget2: [1.0, -.008, 1],
     fov: 10,
