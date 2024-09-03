@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import cscElemModelPath from '../assets/cscelem26.glb';
+import cscElemModelPath from '../assets/cscelemgood.glb';
 
 const CscElem = (props) => {
   const groupRef = useRef();

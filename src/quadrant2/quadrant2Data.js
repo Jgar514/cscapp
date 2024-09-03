@@ -1,9 +1,11 @@
 
 import modelPaths from '../data/modelPaths';
+import { cscelemImage, littlebeachImage, lakeclaireImage, boatrampImage } from '../data/images';
 
 const quadrant2Data = [
   {
     name: "Lake Claire Lake, Beach and Fishing Pier",
+    imageSrc: lakeclaireImage,
     position: [-0.4, 0.02, -1],
     cameraPosition: [-2, 1, -3],
     orbitTarget: [-0.4, 0.02, -1],
@@ -11,9 +13,12 @@ const quadrant2Data = [
     color: '#fde48e',
     secondaryColor: '#ff8c00',
     modelPath: modelPaths.lakeClaire,
+    description: 'Lake Claire is a picturesque lake offering stunning views and a variety of outdoor activities such as fishing and boating.',
+    website: 'https://cscia.org/cscia-services/boat-slips-information/'
   },
   {
     name: "Boat Ramp",
+    imageDrc: boatrampImage,
     position: [-1.7, 0.03, -0.5],
     cameraPosition: [-2.5, .5, -1],
     orbitTarget: [-1.7, 0.03, -0.5],
@@ -21,6 +26,9 @@ const quadrant2Data = [
     color: '#aeb6b4',
     secondaryColor: '#3cb371',
     modelPath: modelPaths.boatRamp,
+    website: 'https://cscia.org/cscia-services/boat-slips-information/',
+    description: `Don't know what to write yet`,
+
   },
   {
     name: "Deep Creek",

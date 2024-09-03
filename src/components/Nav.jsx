@@ -22,20 +22,26 @@ const Nav = ({ backgroundColor, locationName, resetAppState, handleMoreInfoClick
         </div>
 
         <div
-          className='w-1/2 md:h-3/4 flex justify-center items-center'
+          className='w-1/2 px-2 md:h-3/4 flex justify-center items-center'
           style={{ backgroundColor: backgroundColor || 'white' }} // Default to white if no color is set
         >
-          <div className='bg-white w-3/4 h-1/2 flex flex-row justify-center items-center border-2 border-black'>
+
+          <div className='bg-white w-3/4 h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg'>
+            <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl   items-center'>
+              {locationName ? (
+                <div className='w-2/4 h-auto bg-gray-100 flex justify-center items-center font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                  <IoIosClose onClick={handleReset} />
+                </div>
+              ) : (
+                <div className='w-2/4 h-auto bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                  <IoIosSearch onClick={handleMoreInfoClick} />
+                </div>
+              )}
+            </div>
             <div className='w-3/4 h-full flex items-center pl-4'>
               <span className='text-xl font-bold'>{locationName}</span>
             </div>
-            <div className='w-1/4 h-full flex bg-black text-white justify-center text-2xl items-center'>
-              {locationName ? (
-                <IoIosClose onClick={handleReset} />
-              ) : (
-                <IoIosSearch onClick={handleMoreInfoClick} />
-              )}
-            </div>
+
           </div>
         </div>
 

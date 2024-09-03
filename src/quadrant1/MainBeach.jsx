@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import mainBeachModelPath from '../assets/mainbeach13.glb';
+import mainBeachModelPath from '../assets/mainbeach14.glb';
 
 const MainBeach = (props) => {
   const groupRef = useRef();

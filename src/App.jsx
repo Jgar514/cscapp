@@ -25,12 +25,14 @@ import CapeFirehouse from './quadrant4/CapeFirehouse';
 import LittleMagothyPark from './quadrant4/LittleMagothyPark';
 import { FaFighterJet } from "react-icons/fa";
 import Nav from "./components/Nav"
-import quadrant1 from './quadrant1/quadrant1Data';
-import quadrant2 from './quadrant2/quadrant2Data';
-import quadrant3 from './quadrant3/quadrant3Data';
-import quadrant4 from './quadrant4/quadrant4Data';
+import quadrant1Data from './quadrant1/quadrant1Data';
+import quadrant2Data from './quadrant2/quadrant2Data';
+import quadrant3Data from './quadrant3/quadrant3Data';
+import quadrant4Data from './quadrant4/quadrant4Data';
 import Model from "./components/Model";
-
+import DetailOne from './quadrant1/DetailOne';
+import ShopsDetail from './quadrant4/ShopsDetail';
+import allLocations from './quadrantGlobal/allLocations';
 
 const App = () => {
   const [cameraPosition, setCameraPosition] = useState([0, 2, 4]);
@@ -39,22 +41,39 @@ const App = () => {
   const [backgroundColor, setBackgroundColor] = useState('');
   const [orbitTarget, setOrbitTarget] = useState([0, .00, .4]);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false); // New state for interaction
 
-  const allLocations = [...quadrant1, ...quadrant2, ...quadrant3, ...quadrant4];
+  // Combine all location data
+  const allLocations = [...quadrant1Data, ...quadrant2Data, ...quadrant3Data, ...quadrant4Data];
+
+  // Find the data for the selected location
+  const selectedLocationData = allLocations.find(loc => loc.name === selectedLocation);
+
+  const renderDetailComponent = () => {
+    if (!selectedLocationData) {
+      return <div>Select a location to see more details</div>;
+    }
+
+    // Render the appropriate component based on the selected location
+    if (selectedLocation === 'Cape Shopping Center') {
+      return <ShopsDetail location={selectedLocationData} />;
+    }
+
+    return <DetailOne location={selectedLocationData} />;
+  };
 
   const selectedLocationModelPath = selectedLocation
     ? allLocations.find(loc => loc.name === selectedLocation)?.modelPath
     : null;
 
   const resetAppState = () => {
-    setCameraPosition([0, 2.5, 5]);
-    setFov(50);
+    setCameraPosition([0, 2, 4]);
+    setFov(45);
     setShowMoreInfo(false);
     setSelectedLocation(null);
     setBackgroundColor('');
-    setOrbitTarget([0, 0, 0]);
+    setOrbitTarget([0, .00, .4]);
   };
-
 
   const handleMoreInfoClick = () => {
     setShowMoreInfo(prevState => !prevState); // Toggle dropdown visibility
@@ -63,7 +82,9 @@ const App = () => {
   const orbitControlsRef = useRef(); // Ref for OrbitControls
 
   const handleSpecificMeshClick = (locationName) => {
-    setSelectedLocation(locationName);
+    if (!isInteracting) { // Only handle click if not interacting
+      setSelectedLocation(locationName);
+    }
   };
 
   useEffect(() => {
@@ -96,7 +117,6 @@ const App = () => {
       } else {
         console.log('FOV is not specified for this location.');
       }
-      // setSelectedLocation(locationName);
       setBackgroundColor(location.color);
 
       if (orbitControlsRef.current) {
@@ -106,6 +126,19 @@ const App = () => {
       console.error('Location not found:', locationName);
     }
   };
+
+  useEffect(() => {
+    if (orbitControlsRef.current) {
+      const controls = orbitControlsRef.current;
+      controls.addEventListener('start', () => setIsInteracting(true));
+      controls.addEventListener('end', () => setIsInteracting(false));
+
+      return () => {
+        controls.removeEventListener('start', () => setIsInteracting(true));
+        controls.removeEventListener('end', () => setIsInteracting(false));
+      };
+    }
+  }, []);
 
   useEffect(() => {
     if (orbitControlsRef.current) {
@@ -122,19 +155,17 @@ const App = () => {
     }
   }, [cameraPosition, fov]);
 
-
   return (
     <div className="w-full h-screen relative flex flex-col">
       <Nav
         backgroundColor={backgroundColor}
         locationName={selectedLocation}
         resetAppState={resetAppState}
-        handleMoreInfoClick={handleMoreInfoClick} // Make sure this is passed
-        showMoreInfo={showMoreInfo} // Pass state to Nav if needed
+        handleMoreInfoClick={handleMoreInfoClick}
+        showMoreInfo={showMoreInfo}
       />
       <div
-        className={` z-40 fixed inset-0  border-t-2  pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'
-          }`}
+        className={`z-40 fixed inset-0 border-t-2 pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className='flex flex-row h-full w-full'>
           <div className='w-1/2 h-full bg-black'>
@@ -144,19 +175,24 @@ const App = () => {
               <div>No model available</div>
             )}
           </div>
-          <div className='w-1/2 h-full bg-black bg-opacity-400 flex flex-col justify-center items-center pt-8 ' >
-            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg p-4 '>
-              {/* detail components  */}
+          <div className='w-1/2 h-full bg-black bg-opacity-400 flex flex-col justify-center items-center pt-8'>
+            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg pt-10'>
+              {renderDetailComponent()}
             </div>
           </div>
         </div>
       </div>
 
-      <FaFighterJet size={40} className="fly-jet  z-50" color="#074384" />
+      <FaFighterJet size={40} className="fly-jet z-50" color="#074384" />
 
       {/* Start Scene */}
       <div className='flex flex-grow bg-white'>
-        <Canvas camera={{ position: cameraPosition, fov: fov }}>
+        <Canvas camera={{
+          position: cameraPosition,
+          fov: fov,
+          near: 0.001,
+          far: 800,
+        }}>
           <ambientLight intensity={3.5} />
           <Bay />
           <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
@@ -170,30 +206,23 @@ const App = () => {
           <GoshenFarm onClick={() => handleSpecificMeshClick('Goshen Farm')} />
           <GuardHouse onClick={() => handleSpecificMeshClick('Guard House')} />
           <LakeClaire onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} />
-          {/* <LittleBeach onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} /> */}
           <LittleMagothy />
           <LittleMagothyPark />
           <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
           <Shops onClick={() => handleSpecificMeshClick('Cape Shopping Center')} />
           <Streets />
-
           <Church onClick={() => handleSpecificMeshClick('St. Andrews By the Bay Church')} />
           <OrbitControls
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
-            autoRotateSpeed={-0.5} // Reverse rotation
-            enableZoom={true} // Enable zoom
-            zoomSpeed={0.8} // Control zoom speed, 1 is default, less than 1 is slower
-          // minPolarAngle={0}
-          // maxPolarAngle={Math.PI / 2.2}
+            autoRotateSpeed={-0.5}
+            enableZoom={true}
+            zoomSpeed={0.8}
           />
         </Canvas>
-
-
-
       </div>
     </div>
   );
 };
 
-export default App;
+export default App

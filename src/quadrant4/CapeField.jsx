@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import capeFieldModelPath from '../assets/capefield17.glb';
+import capeFieldModelPath from '../assets/capefield19.glb';
 
 const CapeField = (props) => {
   const groupRef = useRef();

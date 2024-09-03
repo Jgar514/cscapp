@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import guardHouseModelPath from '../assets/guardhouse2.glb';
+import guardHouseModelPath from '../assets/guardhouse3.glb';
 
 const GuardHouse = (props) => {
   const groupRef = useRef();

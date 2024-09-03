@@ -1,4 +1,4 @@
-import { broadneckImage, shopsImage, firedeptImage, cscelemImage, littlebeachImage, mainbeachImage, lakeclaireImage, boatrampImage, goshenfarmImage, standrewsImage, guardtowerImage } from './images';
+import { broadneckImage, shopsImage, firedeptImage, cscelemImage, littlebeachImage, mainbeachImage, lakeclaireImage, boatrampImage, goshenfarmImage, standrewsImage, guardhouseImage } from './images';
 
 const locationsData = [
 
@@ -198,12 +198,10 @@ const locationsData = [
     secondaryColor: '#9370db',
 
     description: `
-      A bustling shopping center offering a wide variety of retail stores, restaurants, and services for the community.
-  
       01 - Rita's Italian Ice  
       02 - Joy Luck  
       03 - Color Nails and Spa  
-      04 - Edward Jones - Chad Miller  
+      04 - Edward Jones   
       05 - Graul's Market  
       06 - Cape Drugs  
       07 - Houck’s Menswear  
@@ -219,7 +217,7 @@ const locationsData = [
       17 - Broadneck Grill  
       18 - The Law Office Of Sean Becker  
       19 - Til Next Time Barber Shop  
-      20 - Davy Dance Academy (bigger space)  
+      20 - Davy Dance Academy 
       21 - Whimsicality  
       22 - Vape n Tobacco  
       23 - Cape Hair Scene & Barber Shop  
@@ -274,8 +272,8 @@ const locationsData = [
 
   },
   {
-    name: 'Guard Tower',
-    imageSrc: guardtowerImage,
+    name: 'Guard House',
+    imageSrc: guardhouseImage,
     cameraPosition: [.2, .5, 1.3],
     orbitTarget: [.9, 0.04, 1.3],
     cameraPosition2: [.2, .5, 1.3],

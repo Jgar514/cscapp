@@ -1,9 +1,11 @@
 import modelPaths from '../data/modelPaths';
+import { broadneckImage, shopsImage, firedeptImage, cscelemImage, littlebeachImage, mainbeachImage, lakeclaireImage, boatrampImage, goshenfarmImage, standrewsImage, guardhouseImage } from '../data/images';
 
 
-const quadrant4 = [
+const quadrant4Data = [
   {
     name: "Cape Shopping Center",
+    imageSrc: shopsImage,
     position: [0.9, 0.05, 1.04],
     cameraPosition: [1.1, .1, 1.09],
     orbitTarget: [0.9, 0.05, 1.04],
@@ -14,6 +16,7 @@ const quadrant4 = [
   },
   {
     name: "Cape Field",
+    // imageSrc: ,
     position: [1.05, 0.05, 1.05],
     cameraPosition: [1.3, .2, 1.19],
     orbitTarget: [1.05, 0.05, 1.05],
@@ -21,9 +24,11 @@ const quadrant4 = [
     color: "green",
     secondaryColor: '#9370db',
     modelPath: modelPaths.capeField,
+    description: 'Cape field is '
   },
   {
     name: "CSC Elementary",
+    imageSrc: cscelemImage,
     position: [0.35, 0.07, 1.0],
     buildingPosition: [0.18, 0.09, 0.9],
     orbitTarget: [0.35, 0.07, 1.0],
@@ -36,6 +41,7 @@ const quadrant4 = [
   },
   {
     name: "Guard House",
+    imageSrc: guardhouseImage,
     position: [0.9, 0.05, 1.3],
     cameraPosition: [.2, .5, 1.3],
     orbitTarget: [0.9, 0.05, 1.3],
@@ -46,6 +52,7 @@ const quadrant4 = [
   },
   {
     name: "Goshen Farm",
+    imageSrc: goshenfarmImage,
     position: [0.4, 0.09, 1.3],
     cameraPosition: [-1.2, .5, 1.65],
     orbitTarget: [0.4, 0.09, 1.3],
@@ -53,18 +60,21 @@ const quadrant4 = [
     color: '#725438',
     secondaryColor: '2B601E',
     modelPath: modelPaths.goshenFarm,
+    detail: " Goshen farm is "
 
   },
   {
     name: "Cape Firehouse",
+    imageSrc: firedeptImage,
     position: [0.85, 0.05, 1.52],
     buildingPosition: [0.18, 0.09, 0.9],
-    orbitTarget: [.8, 0.028, 1.5],
-    cameraPosition: [0, .5, .8],
-    fov: 30,
+    orbitTarget: [0.85, 0.05, 1.52],
+    cameraPosition: [.5, .2, 1.7],
+    fov: 20,
     color: '#AD0407',
     secondaryColor: '2B601E',
     modelPath: modelPaths.capeFirehouse,
+    description: " The Cape Volunteer Fire Department"
 
   },
   {
@@ -77,6 +87,6 @@ const quadrant4 = [
   }
 ];
 
-export default quadrant4;
+export default quadrant4Data;
 
 

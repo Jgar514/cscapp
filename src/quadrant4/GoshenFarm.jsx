@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import goshenFarmModelPath from '../assets/goshenfarm8.glb';
+import goshenFarmModelPath from '../assets/goshenfarm10.glb';
 
 const GoshenFarm = (props) => {
   const groupRef = useRef();

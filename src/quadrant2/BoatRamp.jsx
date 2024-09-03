@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import boatRampModelPath from '../assets/boatramp6.glb';
+import boatRampModelPath from '../assets/boatrampunfin3.glb';
 
 const BoatRamp = (props) => {
   const groupRef = useRef();
