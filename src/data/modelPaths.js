@@ -3,7 +3,7 @@ const modelPaths = {
   //quadrant1
   bay: 'src/assets/boatramp6.glb',
   capeClubHouse: 'src/assets/capeclubhouse6.glb',
-  mainBeach: 'src/assets/mainbeach13.glb',
+  mainBeach: 'src/assets/mainbeach14.glb',
 
 
   //quadrant2
@@ -23,10 +23,10 @@ const modelPaths = {
 
   // quadrant4
   capeShoppingCenter: 'src/assets/shops27.glb ',
-  capeField: 'src/assets/capefield17.glb ',
+  capeField: 'src/assets/capefield19.glb ',
   cscElem: 'src/assets/ucscelem.glb ',
-  capeFirehouse: 'src/assets/capefirehouse5.glb ',
-  guardHouse: 'src/assets/guardhouse2.glb ',
+  capeFirehouse: 'src/assets/ufirehouse.glb',
+  guardHouse: 'src/assets/uguardhouse.glb ',
   goshenFarm: 'src/assets/goshenfarm8.glb ',
 
 };

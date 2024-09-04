@@ -13,7 +13,8 @@ const Nav = ({ backgroundColor, locationName, resetAppState, handleMoreInfoClick
       <div className='w-full flex flex-row flex-wrap h-full'>
         {/* left side */}
         <div className='flex flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-3/4 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 bg-white'>
-          <div className='text-2xl md:text-4xl font-playfair font-bold text-black flex md:items-center h-fit md:h-full w-full md:w-1/2 justify-center px-4'>
+          <div className='text-2xl md:text-4xl font-playfair font-bold text-black flex md:items-center h-fit md:h-full w-full md:w-1/2 justify-center px-4 cursor-pointer'
+            onClick={handleReset}>
             Cape St. Claire
           </div>
           <div className='text-xs md:text-4xl font-mono font-bold h-fit text-black flex md:items-center justify-center w-full md:w-fit'>

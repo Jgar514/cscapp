@@ -13,7 +13,7 @@ import Broadneck from './quadrant3/Broadneck';
 import Shops from './quadrant4/Shops';
 import DetailPage from './components/not';
 import { IoIosSearch } from "react-icons/io";
-import DeepCreek from './quadrant4/DeepCreek';
+import DeepCreek from './quadrant2/DeepCreek';
 // import LittleBeach from './quadrant2/LittleBeach';
 import CapeField from './quadrant4/CapeField';
 import CscElem from './quadrant4/CscElem';
@@ -34,6 +34,8 @@ import DetailOne from './quadrant1/DetailOne';
 import ShopsDetail from './quadrant4/ShopsDetail';
 import allLocations from './quadrantGlobal/allLocations';
 
+
+
 const App = () => {
   const [cameraPosition, setCameraPosition] = useState([0, 2, 4]);
   const [fov, setFov] = useState(45);
@@ -41,7 +43,62 @@ const App = () => {
   const [backgroundColor, setBackgroundColor] = useState('');
   const [orbitTarget, setOrbitTarget] = useState([0, .00, .4]);
   const [showMoreInfo, setShowMoreInfo] = useState(false);
-  const [isInteracting, setIsInteracting] = useState(false); // New state for interaction
+  const [isInteracting, setIsInteracting] = useState(false);
+  const [sceneLoaded, setSceneLoaded] = useState(false);
+
+  const [spotlightsInitialized, setSpotlightsInitialized] = useState(false);
+  const targetRef = useRef();
+  const secondTargetRef = useRef();
+  const thirdTargetRef = useRef();
+  const fourthTargetRef = useRef();
+  const fifthTargetRef = useRef();
+  const sixthTargetRef = useRef();
+  const seventhTargetRef = useRef();
+  const eigthTargetRef = useRef();
+
+
+  const spotLight1 = useRef();
+  const spotLight2 = useRef();
+  const spotLight3 = useRef();
+  const spotLight4 = useRef();
+  const spotLight5 = useRef();
+  const spotLight6 = useRef();
+  const spotLight7 = useRef();
+  const spotLight8 = useRef();
+
+  useEffect(() => {
+    // Use a delay to ensure targets are assigned after everything has been initialized
+    const timer = setTimeout(() => {
+      if (spotLight1.current && targetRef.current) {
+        spotLight1.current.target = targetRef.current;
+      }
+      if (spotLight2.current && secondTargetRef.current) {
+        spotLight2.current.target = secondTargetRef.current;
+      }
+      if (spotLight3.current && thirdTargetRef.current) {
+        spotLight3.current.target = thirdTargetRef.current;
+      }
+      if (spotLight4.current && fourthTargetRef.current) {
+        spotLight4.current.target = fourthTargetRef.current;
+      }
+      if (spotLight5.current && fifthTargetRef.current) {
+        spotLight5.current.target = fifthTargetRef.current;
+      }
+      if (spotLight6.current && sixthTargetRef.current) {
+        spotLight6.current.target = sixthTargetRef.current;
+      }
+      if (spotLight7.current && seventhTargetRef.current) {
+        spotLight7.current.target = seventhTargetRef.current;
+      }
+      if (spotLight8.current && eigthTargetRef.current) {
+        spotLight8.current.target = eigthTargetRef.current;
+      }
+      // Set state to trigger a re-render if necessary
+      setSpotlightsInitialized(true);
+    }, 500); // Adjust delay time as needed
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
 
   // Combine all location data
   const allLocations = [...quadrant1Data, ...quadrant2Data, ...quadrant3Data, ...quadrant4Data];
@@ -86,6 +143,13 @@ const App = () => {
       setSelectedLocation(locationName);
     }
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSceneLoaded(true);  // Set scene loaded to true after a timeout (assuming assets have loaded)
+    }, 2000);  // Adjust timeout duration as needed
+
+    return () => clearTimeout(timer);  // Clean up timer on unmount
+  }, []);
 
   useEffect(() => {
     if (selectedLocation) {
@@ -176,24 +240,29 @@ const App = () => {
             )}
           </div>
           <div className='w-1/2 h-full bg-black bg-opacity-400 flex flex-col justify-center items-center pt-8'>
-            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg pt-10'>
+            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg pt-10 overflow-hidden'>
               {renderDetailComponent()}
             </div>
           </div>
         </div>
       </div>
 
-      <FaFighterJet size={40} className="fly-jet z-50" color="#074384" />
+      {/* Jet Animation */}
+      {sceneLoaded && (
+        <FaFighterJet size={40} className="fly-jet z-50" color="#074384" />
+      )}
+
 
       {/* Start Scene */}
       <div className='flex flex-grow bg-white'>
-        <Canvas camera={{
+        <Canvas onCreated={() => setSceneLoaded(true)} camera={{
           position: cameraPosition,
           fov: fov,
           near: 0.001,
-          far: 800,
+          far: 1300,
         }}>
-          <ambientLight intensity={3.5} />
+          <ambientLight intensity={3} />
+
           <Bay />
           <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
           <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
@@ -215,9 +284,142 @@ const App = () => {
           <OrbitControls
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
-            autoRotateSpeed={-0.5}
+            autoRotate={false}
+            autoRotateSpeed={-.8}
             enableZoom={true}
             zoomSpeed={0.8}
+          />
+          <spotLight ref={spotLight1} position={[-.7, 2, 1]} angle={Math.PI / 8} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
+          <mesh ref={targetRef} position={[-.7, 0, .9]}>
+            <boxGeometry args={[.9, 0.08, .9]} />
+            <meshStandardMaterial color="brown" transparent opacity={0.0} />
+          </mesh>
+          {/* <ambientLight intensity={1.2} /> */}
+          {/* <directionalLight position={[2, 1.8, .5]} intensity={1.2} /> */}
+          {/* <rectAreaLight
+            width={.5}
+            height={.5}
+            color={"#EBFE9B"}
+            intensity={45}
+            position={[-.5, .6, 1.5]}
+
+            penumbra={1}
+            castShadow
+          /> */}
+          <spotLight ref={spotLight2} position={[1, 2, 1]} angle={Math.PI / 16} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
+          <mesh ref={secondTargetRef} position={[1.0, -.008, 1]}>
+            <boxGeometry args={[.55, 0.06, .55]} />
+            <meshStandardMaterial color="green" transparent opacity={0} />
+          </mesh>
+          <spotLight
+            position={[1, 2, 1]}
+            angle={Math.PI / 16}
+            penumbra={0.2}
+            intensity={5}
+            distance={50}
+            decay={2}
+            castShadow
+            target={secondTargetRef.current}
+          />
+          {/* Third target mesh and spotlight */}
+
+          <spotLight
+            position={[.35, 2, 1]}
+            angle={Math.PI / 9}
+            penumbra={0.2}
+            intensity={5}
+            distance={50}
+            decay={2}
+            castShadow
+            target={thirdTargetRef.current}
+          />
+          <spotLight ref={spotLight3} position={[.35, 2, 1]} angle={Math.PI / 9} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+          <mesh ref={thirdTargetRef} position={[.35, 0, 1]}>
+            <boxGeometry args={[.6, 0.08, .6]} />
+            <meshStandardMaterial color="#4682B4" transparent opacity={0} />
+          </mesh>
+
+          <spotLight ref={spotLight4} position={[-.4, 2, -1]} angle={Math.PI / 10} penumbra={0.2} intensity={2.5} distance={50} decay={2} castShadow />
+          <mesh ref={fourthTargetRef} position={[-.4, -.055, -1]}>
+            <boxGeometry args={[.6, 0.08, .6]} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+          </mesh>
+          <spotLight
+            position={[-.4, 2, -1]}
+            angle={Math.PI / 8}
+            penumbra={0.2}
+            intensity={2}
+            distance={50}
+            decay={2}
+            castShadow
+            target={fourthTargetRef.current}
+          />
+
+          <spotLight ref={spotLight5} position={[1.7, 2, -.35]} angle={Math.PI / 6} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+          <mesh ref={fifthTargetRef} position={[1.7, -.055, -.35]}>
+            <boxGeometry args={[.8, 0.08, .8]} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+          </mesh>
+          <spotLight
+            position={[1.7, 2, -.35]}
+            angle={Math.PI / 6}
+            penumbra={0.2}
+            intensity={2}
+            distance={50}
+            decay={2}
+            castShadow
+            target={fifthTargetRef.current}
+          />
+          {/* Sixth target mesh and spotlight with medium yellow color */}
+
+          <spotLight ref={spotLight6} position={[-.3, 2, 2.2]} angle={Math.PI / 16} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+          <mesh ref={sixthTargetRef} position={[-.25, .04, 2.1]} rotation={[Math.PI / 1, -.2, .1]}>
+            <boxGeometry args={[.3, 0.08, .45]} />
+            <meshStandardMaterial color="#ffd700" transparent opacity={0.0} />
+          </mesh>
+
+          <spotLight
+            position={[-.3, 2, 2.2]}
+            angle={Math.PI / 16}
+            penumbra={0.2}
+            intensity={2}
+            distance={50}
+            decay={2}
+            castShadow
+            target={sixthTargetRef.current}
+          />
+
+          {/* Seventh target mesh and spotlight with dark brown color */}
+          <spotLight ref={spotLight7} position={[.37, 2, 1.3]} angle={Math.PI / 20} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+          <mesh ref={seventhTargetRef} position={[.37, 0.06, 1.3]}>
+            <boxGeometry args={[.16, 0.010, .20]} />
+            <meshStandardMaterial color="#654321" transparent opacity={0} />
+          </mesh>
+          <spotLight
+            position={[.37, 2, 1.3]}
+            angle={Math.PI / 20}
+            penumbra={0.2}
+            intensity={2}
+            distance={50}
+            decay={2}
+            castShadow
+            target={seventhTargetRef.current}
+          />
+
+          <spotLight ref={spotLight8} position={[-1.7, 2, -.45]} angle={Math.PI / 15} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+          <mesh ref={eigthTargetRef} position={[-1.7, -.04, -.45]}>
+            <boxGeometry args={[.3, 0.08, .3]} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+          </mesh>
+          <spotLight
+            position={[-1.7, 2, -.45]}
+            angle={Math.PI / 15}
+            penumbra={0.2}
+            intensity={2}
+            distance={50}
+            decay={2}
+            castShadow
+            target={eigthTargetRef.current}
           />
         </Canvas>
       </div>

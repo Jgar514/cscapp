@@ -18,7 +18,7 @@ const quadrant2Data = [
   },
   {
     name: "Boat Ramp",
-    imageDrc: boatrampImage,
+    imageSrc: boatrampImage,
     position: [-1.7, 0.03, -0.5],
     cameraPosition: [-2.5, .5, -1],
     orbitTarget: [-1.7, 0.03, -0.5],
