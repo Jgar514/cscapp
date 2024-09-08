@@ -12,7 +12,7 @@ const modelPaths = {
 
 
   //quadrant3
-  broadneckHighSchool: "src/assets/ubroadneckathletics.glb", // Adjust path as needed
+  broadneckHighSchool: "src/assets/broadneckbg.glb", // Adjust path as needed
   // building: 'src/assets/building.glb',
   // broadneckAthletics: 'src/assets/broadneckAthletics.glb',
   // broadneckLibrary: 'src/assets/broadneckLibrary.glb',
