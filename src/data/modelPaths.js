@@ -2,14 +2,14 @@ const modelPaths = {
 
   //quadrant1
   bay: 'src/assets/boatramp6.glb',
-  capeClubHouse: 'src/assets/capeclubhouse6.glb',
-  mainBeach: 'src/assets/mainbeach14.glb',
+  capeClubHouse: 'src/assets/isocapeclubhouse.glb',
+  mainBeach: 'src/assets/isomainbeach.glb',
 
 
   //quadrant2
-  boatRamp: 'src/assets/boatramp6.glb',
-  lakeClaire: 'src/assets/lakeclaire.glb',
-  littleBeach: 'src/assets/lakeclaire3.glb',
+  boatRamp: 'src/assets/isoboatramp.glb',
+  lakeClaire: 'src/assets/isolakeclaire.glb',
+
 
   //quadrant3
   broadneckHighSchool: "src/assets/ubroadneckathletics.glb", // Adjust path as needed
@@ -17,17 +17,18 @@ const modelPaths = {
   // broadneckAthletics: 'src/assets/broadneckAthletics.glb',
   // broadneckLibrary: 'src/assets/broadneckLibrary.glb',
   // broadneckPark: 'src/assets/broadneckPark.glb',
-  stAndrewsChurch: 'src/assets/church3.glb',
+  stAndrewsChurch: 'src/assets/isochurch.glb',
 
 
 
   // quadrant4
-  capeShoppingCenter: 'src/assets/shops27.glb ',
-  capeField: 'src/assets/capefield19.glb ',
-  cscElem: 'src/assets/ucscelem.glb ',
-  capeFirehouse: 'src/assets/ufirehouse.glb',
-  guardHouse: 'src/assets/uguardhouse.glb ',
-  goshenFarm: 'src/assets/goshenfarm8.glb ',
+  littleMagothyPark: 'src/assets/isolittlemagothypark.glb',
+  capeShoppingCenter: 'src/assets/isoshops.glb ',
+  capeField: 'src/assets/isocapefield.glb ',
+  cscElem: 'src/assets/isocscelem.glb ',
+  capeFirehouse: 'src/assets/isofirehouse.glb',
+  guardHouse: 'src/assets/isoguardhouse.glb ',
+  goshenFarm: 'src/assets/isogoshenfarm.glb ',
 
 };
 

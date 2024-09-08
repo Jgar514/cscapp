@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import lakeClaireModelPath from '../assets/lakeclaire.glb';
+import lakeClaireModelPath from '../assets/intlakeclaire.glb';
 
 const LakeClaire = (props) => {
   const groupRef = useRef();

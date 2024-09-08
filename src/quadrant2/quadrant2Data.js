@@ -22,7 +22,7 @@ const quadrant2Data = [
     position: [-1.7, 0.03, -0.5],
     cameraPosition: [-2.5, .5, -1],
     orbitTarget: [-1.7, 0.03, -0.5],
-    fov: 30,
+    fov: 20,
     color: '#aeb6b4',
     secondaryColor: '#3cb371',
     modelPath: modelPaths.boatRamp,

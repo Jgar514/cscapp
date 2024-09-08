@@ -1,5 +1,5 @@
 import modelPaths from '../data/modelPaths';
-import { broadneckImage, shopsImage, firedeptImage, cscelemImage, littlebeachImage, mainbeachImage, lakeclaireImage, boatrampImage, goshenfarmImage, standrewsImage, guardhouseImage, capefieldmapImage } from '../data/images';
+import { broadneckImage, shopsImage, firedeptImage, cscelemImage, littlebeachImage, mainbeachImage, lakeclaireImage, boatrampImage, goshenfarmImage, standrewsImage, guardhouseImage, capefieldmapImage, littlemagothyparkImage } from '../data/images';
 
 
 const quadrant4Data = [
@@ -105,6 +105,20 @@ const quadrant4Data = [
 
   },
   {
+    name: "Little Magothy Park and Kayak Launch",
+    position: [1.6, 0.03, 1.1],
+    imageSrc: littlemagothyparkImage,
+    cameraPosition: [1.2, 0.25, 1.5],
+    orbitTarget: [1.6, 0.03, 1.1],
+    fov: 15,
+
+    color: '#E78826',
+    secondaryColor: '2B601E',
+    modelPath: modelPaths.littleMagothyPark,
+    website: "https://sites.google.com/site/capeyouthsailing/registration-information?authuser=0",
+    description: 'Access to the little magothy. Good place to launch and store small vessels such as kayaks, canoes, or paddle boards.',
+  },
+  {
     name: "Cape Firehouse",
     imageSrc: firedeptImage,
     position: [0.85, 0.05, 1.52],
@@ -133,10 +147,7 @@ const quadrant4Data = [
     Cape St. Claire Volunteer Fire Company is a combination Fire Department consisting of over 50 volunteers, supplemented by four 24-hour shifts of 5 career personnel per shift (shift begins at 0700 hours). CSCVFC operates with both county owned and volunteer owned equipment to include two engines, a BLS ambulance, a chief's truck, a brush truck, a fire boat, and a utility truck.`,
 
   },
-  {
-    name: "Little Magothy Park and Kayak Launch",
-    position: [1.6, 0.03, 1.1]
-  },
+
   {
     name: "Little Magothy",
     position: [1.8, 0.03, 0.25]

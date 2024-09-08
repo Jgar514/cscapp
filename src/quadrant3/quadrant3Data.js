@@ -1,5 +1,5 @@
 import modelPaths from '../data/modelPaths';
-import { broadneckImage, standrewsImage, lakeclaireImage, boatrampImage } from '../data/images';
+import { broadneckImage, bhslibraryImage, bhsathleticsImage, standrewsImage, lakeclaireImage, boatrampImage } from '../data/images';
 
 
 const quadrant3Data = [
@@ -26,19 +26,29 @@ In 1996, a large construction and expansion project began to accommodate 9th gra
   },
   {
     name: "Broadneck Athletics",
-    position: [-0.6, 0.1, 0.8],
-    imageSrc: '',
+    imageSrc: bhsathleticsImage,
+    position: [-0.75, 0.09, 1.0],
+    cameraPosition: [-.7, .5, 2],
+    orbitTarget: [-0.5, 0.09, 1.0],
+    fov: 30,
+    color: '#000000',
+    secondaryColor: '#ff6347',
+    // modelPath: modelPaths.broadneckHighSchool,
+    website: 'https://www.broadneck.org/',
+
     description: 'add description from allLocationsData'
   },
   {
     name: "Broadneck Library",
-    imageSrc: '',
-    position: [-1.0, 0.1, 1.3],
-    cameraPosition: [0, 2.5, 5],
-    orbitTarget: [-1.0, 0.1, 1.3],
-    detailFov: 50,
-    color: '#228b22',
-    secondaryColor: '#32cd32',
+    imageSrc: bhslibraryImage,
+    position: [-0.75, 0.09, 1.0],
+    cameraPosition: [-1.2, .5, 2],
+    orbitTarget: [-0.5, 0.09, 1.0],
+    fov: 30,
+    color: '#8b0000',
+    secondaryColor: '#ff6347',
+    // modelPath: modelPaths.broadneckHighSchool,
+    website: 'https://www.broadneck.org/',
     description: 'add description from allLocationsData'
   },
   {

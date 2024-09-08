@@ -11,6 +11,10 @@ import standrewsImage from '../assets/detail-images/standrews.jpg';
 import guardhouseImage from '../assets/detail-images/guardtower.webp';
 import capefieldmapImage from '../assets/detail-images/capefieldmap.jpeg';
 import capeclubhouseImage from '../assets/detail-images/capeclubhouse.jpeg';
+import bhsathleticsImage from '../assets/detail-images/bhsathletics.jpg';
+import bhslibraryImage from '../assets/detail-images/bhslibrary.jpg';
+import littlemagothyparkImage from '../assets/detail-images/littlemagothyparkImage.jpg';
+
 
 export {
   broadneckImage,
@@ -25,5 +29,9 @@ export {
   standrewsImage,
   guardhouseImage,
   capefieldmapImage,
-  capeclubhouseImage
+  capeclubhouseImage,
+  bhsathleticsImage,
+  bhslibraryImage,
+  littlemagothyparkImage
+
 };

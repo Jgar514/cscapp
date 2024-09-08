@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Cloud } from '@react-three/drei';
 import GuardHouse from './quadrant4/GuardHouse';
 import Streets from './quadrantGlobal/Streets';
 import Bay from './quadrant1/Bay';
@@ -33,6 +33,9 @@ import Model from "./components/Model";
 import DetailOne from './quadrant1/DetailOne';
 import ShopsDetail from './quadrant4/ShopsDetail';
 import allLocations from './quadrantGlobal/allLocations';
+import Floor from './quadrantGlobal/Floor';
+import BhsLib from './quadrant3/BhsLib';
+import BhsAthletics from './quadrant3/BhsAthletics';
 
 
 
@@ -262,11 +265,28 @@ const App = () => {
           far: 1300,
         }}>
           <ambientLight intensity={3} />
-
+          <directionalLight
+            position={[5, 10, 5]}      // Position of the "sun"
+            intensity={.5}            // Brightness of the light
+            castShadow                 // Enable shadows
+            shadow-mapSize-width={1024} // Shadow resolution (higher for more detail)
+            shadow-mapSize-height={1024}
+            shadow-camera-far={50}      // Maximum distance for shadows
+            shadow-camera-left={-10}    // Camera frustum for shadow
+            shadow-camera-right={10}
+            shadow-camera-top={10}
+            shadow-camera-bottom={-10}
+          />
+          {/* <BhsLib onClick={() => handleSpecificMeshClick('Broadneck Library')} />
+          <BhsAthletics onClick={() => handleSpecificMeshClick('Broadneck Athletics')} />
+          <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} /> */}
+          <BroadneckPark />
+          <Floor />
           <Bay />
           <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
-          <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
-          <BroadneckPark />
+
+
+
           <CapeClubhouse onClick={() => handleSpecificMeshClick('Cape Club House')} />
           <CapeField onClick={() => handleSpecificMeshClick('Cape Field')} />
           <CapeFirehouse onClick={() => handleSpecificMeshClick('Cape Firehouse')} />
@@ -276,7 +296,7 @@ const App = () => {
           <GuardHouse onClick={() => handleSpecificMeshClick('Guard House')} />
           <LakeClaire onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} />
           <LittleMagothy />
-          <LittleMagothyPark />
+          <LittleMagothyPark onClick={() => handleSpecificMeshClick('Little Magothy Park and Kayak Launch')} />
           <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
           <Shops onClick={() => handleSpecificMeshClick('Cape Shopping Center')} />
           <Streets />
@@ -289,23 +309,10 @@ const App = () => {
             enableZoom={true}
             zoomSpeed={0.8}
           />
-          <spotLight ref={spotLight1} position={[-.7, 2, 1]} angle={Math.PI / 8} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
-          <mesh ref={targetRef} position={[-.7, 0, .9]}>
-            <boxGeometry args={[.9, 0.08, .9]} />
-            <meshStandardMaterial color="brown" transparent opacity={0.0} />
-          </mesh>
-          {/* <ambientLight intensity={1.2} /> */}
-          {/* <directionalLight position={[2, 1.8, .5]} intensity={1.2} /> */}
-          {/* <rectAreaLight
-            width={.5}
-            height={.5}
-            color={"#EBFE9B"}
-            intensity={45}
-            position={[-.5, .6, 1.5]}
 
-            penumbra={1}
-            castShadow
-          /> */}
+
+
+          {/* cape field and shops spotlight */}
           <spotLight ref={spotLight2} position={[1, 2, 1]} angle={Math.PI / 16} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
           <mesh ref={secondTargetRef} position={[1.0, -.008, 1]}>
             <boxGeometry args={[.55, 0.06, .55]} />
@@ -333,16 +340,19 @@ const App = () => {
             castShadow
             target={thirdTargetRef.current}
           />
+          {/* csc elementary spotlight */}
           <spotLight ref={spotLight3} position={[.35, 2, 1]} angle={Math.PI / 9} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
           <mesh ref={thirdTargetRef} position={[.35, 0, 1]}>
             <boxGeometry args={[.6, 0.08, .6]} />
-            <meshStandardMaterial color="#4682B4" transparent opacity={0} />
+            <meshStandardMaterial color="#4682B4" transparent opacity={1} />
           </mesh>
 
+
+          {/* lake claire spotlight */}
           <spotLight ref={spotLight4} position={[-.4, 2, -1]} angle={Math.PI / 10} penumbra={0.2} intensity={2.5} distance={50} decay={2} castShadow />
           <mesh ref={fourthTargetRef} position={[-.4, -.055, -1]}>
             <boxGeometry args={[.6, 0.08, .6]} />
-            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0} />
           </mesh>
           <spotLight
             position={[-.4, 2, -1]}
@@ -354,11 +364,11 @@ const App = () => {
             castShadow
             target={fourthTargetRef.current}
           />
-
+          {/* main beach and cape club house spotlight */}
           <spotLight ref={spotLight5} position={[1.7, 2, -.35]} angle={Math.PI / 6} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
           <mesh ref={fifthTargetRef} position={[1.7, -.055, -.35]}>
             <boxGeometry args={[.8, 0.08, .8]} />
-            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0} />
           </mesh>
           <spotLight
             position={[1.7, 2, -.35]}
@@ -370,12 +380,12 @@ const App = () => {
             castShadow
             target={fifthTargetRef.current}
           />
-          {/* Sixth target mesh and spotlight with medium yellow color */}
+          {/* Church spotlight */}
 
           <spotLight ref={spotLight6} position={[-.3, 2, 2.2]} angle={Math.PI / 16} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
           <mesh ref={sixthTargetRef} position={[-.25, .04, 2.1]} rotation={[Math.PI / 1, -.2, .1]}>
             <boxGeometry args={[.3, 0.08, .45]} />
-            <meshStandardMaterial color="#ffd700" transparent opacity={0.0} />
+            <meshStandardMaterial color="#ffd700" transparent opacity={0} />
           </mesh>
 
           <spotLight
@@ -389,27 +399,27 @@ const App = () => {
             target={sixthTargetRef.current}
           />
 
-          {/* Seventh target mesh and spotlight with dark brown color */}
+          {/* goshen farm */}
           <spotLight ref={spotLight7} position={[.37, 2, 1.3]} angle={Math.PI / 20} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
           <mesh ref={seventhTargetRef} position={[.37, 0.06, 1.3]}>
             <boxGeometry args={[.16, 0.010, .20]} />
-            <meshStandardMaterial color="#654321" transparent opacity={0} />
+            <meshStandardMaterial color="#654321" transparent opacity={1} />
           </mesh>
           <spotLight
             position={[.37, 2, 1.3]}
-            angle={Math.PI / 20}
+            angle={Math.PI / 30}
             penumbra={0.2}
-            intensity={2}
+            intensity={4}
             distance={50}
             decay={2}
             castShadow
             target={seventhTargetRef.current}
           />
-
+          {/* boat ramp spotlight */}
           <spotLight ref={spotLight8} position={[-1.7, 2, -.45]} angle={Math.PI / 15} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
           <mesh ref={eigthTargetRef} position={[-1.7, -.04, -.45]}>
             <boxGeometry args={[.3, 0.08, .3]} />
-            <meshStandardMaterial color="#add8e6" transparent opacity={0.0} />
+            <meshStandardMaterial color="#add8e6" transparent opacity={0} />
           </mesh>
           <spotLight
             position={[-1.7, 2, -.45]}
@@ -421,6 +431,17 @@ const App = () => {
             castShadow
             target={eigthTargetRef.current}
           />
+          {/* <Cloud
+            position={[-.75, .1, 0]}  // Position above the scene
+            opacity={1}         // Transparency of clouds
+            speed={0.4}           // Speed at which clouds move
+            width={1000}            // Original width of the cloud layer
+            depth={1000}           // Original depth of the cloud layer
+            segments={20}        // Original segments for cloud detail
+            scale={[0.012, 0.01, 0.01]}  // Scale down the entire cloud layer
+            color="skyblue"
+          /> */}
+
         </Canvas>
       </div>
     </div>

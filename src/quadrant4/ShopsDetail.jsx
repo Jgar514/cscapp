@@ -25,7 +25,7 @@ const ShopsDetail = () => {
   // Define ranges for the three columns
   const firstColumn = shopDetails.slice(0, 11);
   const secondColumn = shopDetails.slice(11, 15);
-  const thirdColumn = shopDetails.slice(15)
+  const thirdColumn = shopDetails.slice(15);
 
   return (
     <div className="shops-detail h-full overflow-y-auto">
@@ -68,7 +68,7 @@ const ShopsDetail = () => {
             <div key={index + 11} className="mb-2">
               <button
                 className="text-left w-full p-2 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200"
-                onClick={() => toggleSection(index + 12)}
+                onClick={() => toggleSection(index + 11)}
               >
                 {shop.trim()}
               </button>
@@ -84,14 +84,14 @@ const ShopsDetail = () => {
         {/* Third Column */}
         <div className="w-1/3 pr-2">
           {thirdColumn.map((shop, index) => (
-            <div key={index + 16} className="mb-2">
+            <div key={index + 15} className="mb-2">
               <button
                 className="text-left w-full p-2 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200"
-                onClick={() => toggleSection(index + 16)}
+                onClick={() => toggleSection(index + 15)}
               >
                 {shop.trim()}
               </button>
-              {openSections[index + 16] && (
+              {openSections[index + 15] && (
                 <div className="p-2 pl-4 border-l-2 border-gray-400 mt-1 bg-white">
                   <p>Details about {shop.trim()} will go here.</p>
                 </div>

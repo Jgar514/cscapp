@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
-import capeClubhouseModelPath from '../assets/capeclubhouse6.glb';
+import capeClubhouseModelPath from '../assets/intcapeclubhouse.glb';
 
 const CapeClubhouse = (props) => {
   const groupRef = useRef();
