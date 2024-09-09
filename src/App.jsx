@@ -312,8 +312,8 @@ const App = () => {
           {/* quadrant three components */}
           <Church onClick={() => handleSpecificMeshClick('St. Andrews By the Bay Church')} />
           <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
-          <BhsAthletics />
-          <BhsLib />
+
+
           <BroadneckPark />
 
           {/* quadrant four components */}
