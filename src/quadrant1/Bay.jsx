@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import bayModelPath from '../assets/bay.glb';
+import bayModelPath from '/assets/bay.glb';
 
 const Bay = (props) => {
   const groupRef = useRef();

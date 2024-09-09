@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
-import bhsLibModelPath from '../assets/bhslibbg.glb';
+import bhsLibModelPath from '/assets/bhslibbg.glb';
 import { BoxHelper } from 'three';
 
 const BhsLib = (props) => {

@@ -1,37 +1,16 @@
-import broadneckImage from '../assets/detail-images/bhsdetailphoto.jpg';
-import shopsImage from '../assets/detail-images/shops.jpg';
-import firedeptImage from '../assets/detail-images/firedept.jpg';
-import cscelemImage from '../assets/detail-images/cscelem1.jpeg';
-import littlebeachImage from '../assets/detail-images/littlebeach.jpeg';
-import mainbeachImage from '../assets/detail-images/mainbeach.jpeg';
-import lakeclaireImage from '../assets/detail-images/littlebeach.jpeg';
-import boatrampImage from '../assets/detail-images/boatramp.png';
-import goshenfarmImage from '../assets/detail-images/goshenfarm.jpg';
-import standrewsImage from '../assets/detail-images/standrews.jpg';
-import guardhouseImage from '../assets/detail-images/guardtower.webp';
-import capefieldmapImage from '../assets/detail-images/capefieldmap.jpeg';
-import capeclubhouseImage from '../assets/detail-images/capeclubhouse.jpeg';
-import bhsathleticsImage from '../assets/detail-images/bhsathletics.jpg';
-import bhslibraryImage from '../assets/detail-images/bhslibrary.jpg';
-import littlemagothyparkImage from '../assets/detail-images/littlemagothyparkImage.jpg';
-
-
-export {
-  broadneckImage,
-  shopsImage,
-  firedeptImage,
-  cscelemImage,
-  littlebeachImage,
-  mainbeachImage,
-  lakeclaireImage,
-  boatrampImage,
-  goshenfarmImage,
-  standrewsImage,
-  guardhouseImage,
-  capefieldmapImage,
-  capeclubhouseImage,
-  bhsathleticsImage,
-  bhslibraryImage,
-  littlemagothyparkImage
-
-};
+export const broadneckImage = '/assets/detail-images/bhsdetailphoto.jpg';
+export const shopsImage = '/assets/detail-images/shops.jpg';
+export const firedeptImage = '/assets/detail-images/firedept.jpg';
+export const cscelemImage = '/assets/detail-images/cscelem1.jpeg';
+export const littlebeachImage = '/assets/detail-images/littlebeach.jpeg';
+export const mainbeachImage = '/assets/detail-images/mainbeach.jpeg';
+export const lakeclaireImage = '/assets/detail-images/lakeclaire.jpeg'; // Corrected from 'littlebeach.jpeg'
+export const boatrampImage = '/assets/detail-images/boatramp.png';
+export const goshenfarmImage = '/assets/detail-images/goshenfarm.jpg';
+export const standrewsImage = '/assets/detail-images/standrews.jpg';
+export const guardhouseImage = '/assets/detail-images/guardtower.webp';
+export const capefieldmapImage = '/assets/detail-images/capefieldmap.jpeg';
+export const capeclubhouseImage = '/assets/detail-images/capeclubhouse.jpeg';
+export const bhsathleticsImage = '/assets/detail-images/bhsathletics.jpg';
+export const bhslibraryImage = '/assets/detail-images/bhslibrary.jpg';
+export const littlemagothyparkImage = '/assets/detail-images/littlemagothyparkImage.jpg';

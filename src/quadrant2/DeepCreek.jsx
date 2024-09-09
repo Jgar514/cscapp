@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import deepCreekModelPath from '../assets/deepcreek.glb';
+import deepCreekModelPath from '/assets/deepcreek.glb';
 
 const DeepCreek = (props) => {
   const groupRef = useRef();

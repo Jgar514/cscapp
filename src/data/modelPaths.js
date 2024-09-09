@@ -1,34 +1,34 @@
 const modelPaths = {
 
   //quadrant1
-  bay: 'src/assets/boatramp6.glb',
-  capeClubHouse: 'src/assets/isocapeclubhouse.glb',
-  mainBeach: 'src/assets/isomainbeach.glb',
+  bay: '/assets/boatramp6.glb',
+  capeClubHouse: '/assets/isocapeclubhouse.glb',
+  mainBeach: '/assets/isomainbeach.glb',
 
 
   //quadrant2
-  boatRamp: 'src/assets/isoboatramp.glb',
-  lakeClaire: 'src/assets/isolakeclaire.glb',
+  boatRamp: '/assets/isoboatramp.glb',
+  lakeClaire: '/assets/isolakeclaire.glb',
 
 
   //quadrant3
-  broadneckHighSchool: "src/assets/isobroadneck.glb", // Adjust path as needed
-  // building: 'src/assets/building.glb',
-  // broadneckAthletics: 'src/assets/broadneckAthletics.glb',
-  // broadneckLibrary: 'src/assets/broadneckLibrary.glb',
-  // broadneckPark: 'src/assets/broadneckPark.glb',
-  stAndrewsChurch: 'src/assets/isochurch.glb',
+  broadneckHighSchool: "/assets/isobroadneck.glb", // Adjust path as needed
+  // building: '/assets/building.glb',
+  // broadneckAthletics: '/assets/broadneckAthletics.glb',
+  // broadneckLibrary: '/assets/broadneckLibrary.glb',
+  // broadneckPark: '/assets/broadneckPark.glb',
+  stAndrewsChurch: '/assets/isochurch.glb',
 
 
 
   // quadrant4
-  littleMagothyPark: 'src/assets/isolittlemagothypark.glb',
-  capeShoppingCenter: 'src/assets/isoshops.glb ',
-  capeField: 'src/assets/isocapefield.glb ',
-  cscElem: 'src/assets/isocscelem.glb ',
-  capeFirehouse: 'src/assets/isofirehouse.glb',
-  guardHouse: 'src/assets/isoguardhouse.glb ',
-  goshenFarm: 'src/assets/isogoshenfarm.glb ',
+  littleMagothyPark: '/assets/isolittlemagothypark.glb',
+  capeShoppingCenter: 's/assets/isoshops.glb ',
+  capeField: '/assets/isocapefield.glb ',
+  cscElem: '/assets/isocscelem.glb ',
+  capeFirehouse: '/assets/isofirehouse.glb',
+  guardHouse: '/assets/isoguardhouse.glb ',
+  goshenFarm: '/assets/isogoshenfarm.glb ',
 
 };
 
