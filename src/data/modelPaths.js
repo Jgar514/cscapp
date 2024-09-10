@@ -23,7 +23,7 @@ const modelPaths = {
 
   // quadrant4
   littleMagothyPark: '/assets/isolittlemagothypark.glb',
-  capeShoppingCenter: 's/assets/isoshops.glb ',
+  capeShoppingCenter: '/assets/isoshops.glb ',
   capeField: '/assets/isocapefield.glb ',
   cscElem: '/assets/isocscelem.glb ',
   capeFirehouse: '/assets/isofirehouse.glb',

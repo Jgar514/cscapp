@@ -20,7 +20,7 @@ const Model = ({ modelPath }) => {
         enablePan={false}  // Disable panning
       />
       {/* Lighting */}
-      <ambientLight intensity={0.5} /> {/* Moderate ambient light */}
+      <ambientLight intensity={1.5} /> {/* Moderate ambient light */}
 
       {/* Point Lights positioned very close to the model */}
       <pointLight

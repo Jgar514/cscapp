@@ -31,7 +31,7 @@ const DetailOne = ({ location }) => {
 
   return (
     <div className='p-2 h-full w-full overflow-y-auto'>
-      <h1 className="text-2xl font-bold mb-4">{location.name}</h1>
+      <h1 className="text-2xl font-bold mb-4 p-4">{location.name}</h1>
 
       {/* Render the image if imageSrc is available */}
       {location.imageSrc && (
@@ -45,34 +45,35 @@ const DetailOne = ({ location }) => {
       )}
 
       {/* Render the link if available */}
-      {location.website && (
-        <a
-          href={location.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-500 underline block mt-4"
-        >
-          Visit Website
-        </a>
-      )}
+      <div className='p-4'>
+        {location.website && (
+          <a
+            href={location.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline block mt-4"
+          >
+            Visit Website
+          </a>
+        )}
 
-      {/* Render the description with proper formatting */}
-      <div className="mb-4">
-        {isDescriptionLongEnough && !isExpanded
-          ? formatDescription(shortDescription)
-          : formatDescription(location.description)}
+        {/* Render the description with proper formatting */}
+        <div className="mb-4">
+          {isDescriptionLongEnough && !isExpanded
+            ? formatDescription(shortDescription)
+            : formatDescription(location.description)}
+        </div>
+
+        {/* Toggle button only if the description is long enough */}
+        {isDescriptionLongEnough && (
+          <button
+            onClick={toggleExpand}
+            className="text-blue-500 underline cursor-pointer"
+          >
+            {isExpanded ? 'Show Less' : 'Show More'}
+          </button>
+        )}
       </div>
-
-      {/* Toggle button only if the description is long enough */}
-      {isDescriptionLongEnough && (
-        <button
-          onClick={toggleExpand}
-          className="text-blue-500 underline cursor-pointer"
-        >
-          {isExpanded ? 'Show Less' : 'Show More'}
-        </button>
-      )}
-
 
     </div>
   );

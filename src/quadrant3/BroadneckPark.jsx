@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import broadneckParkModelPath from '/assets/broadneckparkbg.glb';
+import broadneckParkModelPath from '/assets/intbroadneckpark.glb';
 
 const BroadneckPark = (props) => {
   const groupRef = useRef();

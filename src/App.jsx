@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Loader } from '@react-three/drei';
 
 // quadrant one imports
 import quadrant1Data from './quadrant1/quadrant1Data';
@@ -142,19 +142,19 @@ const App = () => {
     ? allLocations.find(loc => loc.name === selectedLocation)?.modelPath
     : null;
 
-
-
-  const handleMoreInfoClick = () => {
-    setShowMoreInfo(prevState => !prevState); // Toggle dropdown visibility
-  };
-
-  const orbitControlsRef = useRef(); // Ref for OrbitControls
-
   const handleSpecificMeshClick = (locationName) => {
     if (!isInteracting) { // Only handle click if not interacting
       setSelectedLocation(locationName);
     }
   };
+
+  const handleMoreInfoClick = () => {
+    setShowMoreInfo(prevState => !prevState); // Toggle dropdown visibility
+  };
+
+  const orbitControlsRef = useRef();
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setSceneLoaded(true);  // Set scene loaded to true after a timeout (assuming assets have loaded)
@@ -232,7 +232,9 @@ const App = () => {
   }, [cameraPosition, fov]);
 
   return (
+
     <div className="w-full h-screen relative flex flex-col">
+
       <Nav
         backgroundColor={backgroundColor}
         locationName={selectedLocation}
@@ -267,9 +269,10 @@ const App = () => {
 
 
 
-
       {/* Start Scene */}
       <div className='flex flex-grow bg-white'>
+
+
         <Canvas onCreated={() => setSceneLoaded(true)} camera={{
           position: cameraPosition,
           fov: fov,

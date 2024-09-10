@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import WeatherCard from "./WeatherCard";
 import { IoIosSearch, IoIosClose } from 'react-icons/io';
+import { PiHouseSimpleDuotone } from "react-icons/pi";
+import { PiHouseSimpleFill } from "react-icons/pi";
+import { IoIosHelpBuoy } from "react-icons/io";
+import { GiBoatHorizon } from "react-icons/gi";
 
 const Nav = ({
   backgroundColor,
@@ -45,10 +49,18 @@ const Nav = ({
     <div className='w-full h-1/6 md:h-[100px] flex flex-col md:flex-col md:items-start md:justify-start justify-between py-0 z-50 bg-white'>
       <div className='w-full flex flex-row flex-wrap h-full'>
         {/* left side */}
-        <div className='flex flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-3/4 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 bg-white'>
-          <div className='text-2xl md:text-4xl font-playfair font-bold text-black flex md:items-center h-fit md:h-full w-full md:w-1/2 justify-center px-4 cursor-pointer'
+        <div className='flex flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 bg-white'>
+          <div className='text-2xl md:text-4xl font-playfair font-bold text-black flex-col md:items-center h-fit md:h-full w-full md:w-1/2  flex justify-center items-start px-4 cursor-pointer md:justify-start '
             onClick={handleReset}>
-            Cape St. Claire
+            <div className='py-2'>
+              Cape St. Claire
+            </div>
+            <div className='text-2xl text-pink bg-gray-50 flex flex-row gap-6 font-bold w-full justify-end pr-12'>
+              <IoIosHelpBuoy />
+              <PiHouseSimpleDuotone />
+              <GiBoatHorizon />
+
+            </div>
           </div>
           <div className='text-xs md:text-4xl font-mono font-bold h-fit text-black flex md:items-center justify-center w-full md:w-fit'>
             <WeatherCard />
@@ -109,7 +121,7 @@ const Nav = ({
         {/* Conditional Dropdown Button */}
         {locationName && (
           <div
-            className={`w-full h-1/4 flex justify-end items-center transition-all duration-300 bg-white`}
+            className={`w-full h-1/6 flex justify-end items-center transition-all duration-300 bg-white`}
             style={{ backgroundColor: showMoreInfo ? (backgroundColor || 'white') : 'white' }} // Use backgroundColor or default to blue
           >
             <div className='w-1/2 bg-white h-full flex flex-col'>
