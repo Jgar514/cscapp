@@ -74,7 +74,7 @@ const Nav = ({
           {/* <h1 className="text-xl" onClick={toggleDark} >{dark ? 'Dark Mode' : 'Light Mode'} </h1> */}
           <div className='flex flex-col-reverse md:flex-col-reverse  font-bold w-1/2 md:w-1/2 h-full   md:pr-12 items-center md:justify-end md:h-full'>
             <div className='flex flex-row md:items-center text-2xl text-pink  gap-4 md:h-1/3 bg-gray-50 '>
-              <IoIosHelpBuoy />
+              <IoIosHelpBuoy onClick={() => alert("This icon will eventually show a help component to users")} />
               <PiHouseSimpleDuotone onClick={toggleHomes} />
               <GiBoatHorizon onClick={toggleDark} />
             </div>
@@ -95,12 +95,13 @@ const Nav = ({
 
         </div>
 
+        {/* This is the right side of the nav bar on desktop */}
         <div
           className='w-full md:w-1/2 md:px-2 py-2 md:py-0 md:h-5/6 flex justify-center items-center md:items-center h-1/2'
           style={{ backgroundColor: backgroundColor || '' }} // Default to white if no color is set
         >
-
-          <div className=' w-5/6 md:h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative bg-white'>
+          {/* This is the actual search bar */}
+          <div className=' w-5/6 md:h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative bg-white text-black'>
             <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl items-center '>
               {locationName ? (
                 <div className='md:w-2/4 hover:bg-pink h-auto bg-gray-100 flex justify-center items-center  font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
@@ -116,7 +117,7 @@ const Nav = ({
             </div>
             <div className='w-3/4 h-full flex items-center pl-4'>
               {locationName ? (
-                <span className='md:text-xl  font-bold'>
+                <span className='md:text-xl  font-bold text-black'>
                   {locationName}
                 </span>
               ) : (
@@ -133,7 +134,7 @@ const Nav = ({
 
           {/* Display search results */}
           {(searchTerm || showAllLocations) && (
-            <div className='absolute top-16 bg-white border border-gray-300 rounded-lg w-2/5 z-10 h-5/6 overflow-y-auto'>
+            <div className='absolute top-16 bg-white border border-gray-300 rounded-lg w-2/5 z-10 h-5/6 overflow-y-auto text-black'>
               {(showAllLocations ? allLocations : searchResults).map((location, index) => (
                 <div
                   key={index}
@@ -165,7 +166,7 @@ const Nav = ({
               style={{ backgroundColor: showMoreInfo ? (backgroundColor || 'blue') : 'white' }} // Use backgroundColor or default to blue
               onClick={handleMoreInfoClick}
             >
-              <div className='w-fit px-2 bg-gray-200 border-2 border-black'>
+              <div className='w-fit px-2 bg-gray-200 border-2 border-black text-black'>
                 {showMoreInfo ? 'Less Info' : 'More Info'} {/* Toggle text */}
               </div>
             </div>

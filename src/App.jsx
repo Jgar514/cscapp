@@ -21,8 +21,8 @@ import quadrant3Data from './quadrant3/quadrant3Data';
 import Broadneck from './quadrant3/Broadneck';
 import BroadneckPark from './quadrant3/BroadneckPark';
 import Church from './quadrant3/Church';
-import BhsLib from './quadrant3/BhsLib';
-import BhsAthletics from './quadrant3/BhsAthletics';
+// import BhsLib from './quadrant3/BhsLib';
+// import BhsAthletics from './quadrant3/BhsAthletics';
 
 // quadrant four imports
 import quadrant4Data from './quadrant4/quadrant4Data';
@@ -299,7 +299,7 @@ const App = () => {
           <OrbitControls
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
-            autoRotate={false}
+            autoRotate={true}
             autoRotateSpeed={-.6}
             enableZoom={true}
             zoomSpeed={0.8}
@@ -326,7 +326,7 @@ const App = () => {
           <CargoShip />
 
           {/* quadrant two components */}
-          <DeepCreek />
+          <DeepCreek dark={dark} />
           <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
           <LakeClaire onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} />
 
@@ -347,7 +347,7 @@ const App = () => {
           <CscElem onClick={() => handleSpecificMeshClick('CSC Elementary')} />
           <GoshenFarm onClick={() => handleSpecificMeshClick('Goshen Farm')} />
           <GuardHouse onClick={() => handleSpecificMeshClick('Guard House')} />
-          <LittleMagothy />
+          <LittleMagothy dark={dark} />
           <LittleMagothyPark onClick={() => handleSpecificMeshClick('Little Magothy Park and Kayak Launch')} />
 
           {/* quadrant global components */}
