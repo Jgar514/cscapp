@@ -7,6 +7,7 @@ import quadrant1Data from './quadrant1/quadrant1Data';
 import Bay from './quadrant1/Bay';
 import MainBeach from './quadrant1/MainBeach';
 import CapeClubhouse from './quadrant1/CapeClubhouse';
+import CargoShip from './quadrant1/CargoShip';
 
 
 // quadrant two imports
@@ -322,6 +323,7 @@ const App = () => {
           <Bay dark={dark} />
           <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
           <CapeClubhouse onClick={() => handleSpecificMeshClick('Cape Club House')} />
+          <CargoShip />
 
           {/* quadrant two components */}
           <DeepCreek />
