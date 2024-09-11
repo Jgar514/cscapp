@@ -22,12 +22,19 @@ const Nav = ({
   allLocations // Added prop for all locations
 }) => {
   const [searchTerm, setSearchTerm] = useState(''); // Local state for search input
-  const [searchResults, setSearchResults] = useState([]); // State to store search results
+  const [searchResults, setSearchResults] = useState([]);
+  const [showAllLocations, setShowAllLocations] = useState(false);
 
   const handleReset = () => {
     resetAppState(); // Reset the app state and close the dropdown
     setSearchTerm(''); // Clear the search input when resetting
     setSearchResults([]); // Clear search results when resetting
+  };
+
+
+
+  const handleShowAllClick = () => {
+    setShowAllLocations(!showAllLocations); // Toggle the state
   };
 
   const handleSearchChange = (e) => {
@@ -60,7 +67,7 @@ const Nav = ({
         {/* left side */}
         <div className='flex flex-row md:flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 '>
 
-          <div className='pt-2 md:py-2  md:w-1/2 w-3/5 justify-center flex text-3xl font-playfair font-bold' onClick={handleReset}>
+          <div className='pt-2 md:py-2  md:w-1/2 w-3/5 justify-center flex text-2xl md:text-4xl font-playfair font-bold' onClick={handleReset}>
             Cape St. Claire
           </div>
 
@@ -100,7 +107,9 @@ const Nav = ({
                   <IoIosClose onClick={handleReset} />
                 </div>
               ) : (
-                <div className='md:w-2/4 h-auto hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                <div className='md:w-2/4 h-auto hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black '
+                  onClick={handleShowAllClick}
+                >
                   <IoIosSearch />
                 </div>
               )}
@@ -123,9 +132,9 @@ const Nav = ({
           </div>
 
           {/* Display search results */}
-          {searchTerm && searchResults.length > 0 && (
-            <div className='absolute top-16 bg-white border border-gray-300 rounded-lg w-1/2 z-10'>
-              {searchResults.map((location, index) => (
+          {(searchTerm || showAllLocations) && (
+            <div className='absolute top-16 bg-white border border-gray-300 rounded-lg w-2/5 z-10 h-5/6 overflow-y-auto'>
+              {(showAllLocations ? allLocations : searchResults).map((location, index) => (
                 <div
                   key={index}
                   className='px-4 py-2 hover:bg-gray-200 cursor-pointer'
