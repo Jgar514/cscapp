@@ -3,28 +3,44 @@ import { useGLTF } from '@react-three/drei';
 import { MeshStandardMaterial } from 'three';
 import floorModelPath from '/assets/floorbg.glb';
 
-const Floor = (props) => {
+const Floor = ({ dark, ...props }) => {
   const groupRef = useRef();
   const { scene } = useGLTF(floorModelPath);
 
+  // Create materials based on dark mode
+  const lightMaterial = new MeshStandardMaterial({
+    color: 'white',
+    emissive: 'white',
+    emissiveIntensity: 1,
+    roughness: 0,
+    metalness: 0,
+    vertexColors: false,
+    transparent: false,
+    opacity: 1,
+  });
+
+  const darkMaterial = new MeshStandardMaterial({
+    color: '#333333',
+    emissive: '#333333',
+    emissiveIntensity: 1,
+    roughness: 0,
+    metalness: 0,
+    vertexColors: false,
+    transparent: false,
+    opacity: 1,
+  });
+
   useEffect(() => {
+    const material = dark ? darkMaterial : lightMaterial;
+
     scene.traverse((child) => {
       if (child.isMesh) {
         child.castShadow = false; // Ensure shadows are disabled
         child.receiveShadow = false;
-        child.material = new MeshStandardMaterial({
-          color: 'white',
-          emissive: 'white',         // Make the material emit some light
-          emissiveIntensity: 1,    // Increase the intensity of the emissive light
-          roughness: 0,
-          metalness: 0,
-          vertexColors: false,
-          transparent: false,  // Disable transparency
-          opacity: 1,   // Disable any vertex colors from Blender
-        });
+        child.material = material; // Apply the chosen material
       }
     });
-  }, [scene]);
+  }, [dark, scene, darkMaterial, lightMaterial]);
 
   return (
     <group ref={groupRef} {...props}>

@@ -43,6 +43,7 @@ import Nav from "./quadrantGlobal/Nav"
 import { FaFighterJet } from "react-icons/fa";
 import Model from "./quadrantGlobal/Model";
 import DetailOne from './quadrant1/DetailOne';
+import Houses from './quadrantGlobal/Houses';
 
 const App = () => {
 
@@ -52,6 +53,17 @@ const App = () => {
   const [orbitTarget, setOrbitTarget] = useState([0, .00, .4]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [sceneLoaded, setSceneLoaded] = useState(false);
+  const [dark, setDark] = useState(false);
+  const [homes, setHomes] = useState(false);
+
+  const toggleDark = () => {
+    setDark(prevDark => !prevDark);
+  };
+
+  const toggleHomes = () => {
+    setHomes(prevHomes => !prevHomes);
+  };
+
   const resetAppState = () => {
     setCameraPosition([0, 2, 4]);
     setFov(45);
@@ -236,6 +248,10 @@ const App = () => {
     <div className="w-full h-screen relative flex flex-col">
 
       <Nav
+        dark={dark}
+        toggleDark={toggleDark}
+        homes={homes}
+        toggleHomes={toggleHomes}
         backgroundColor={backgroundColor}
         locationName={selectedLocation}
         resetAppState={resetAppState}
@@ -270,7 +286,7 @@ const App = () => {
 
 
       {/* Start Scene */}
-      <div className='flex flex-grow bg-white'>
+      <div className={`flex flex-grow ${dark ? 'bg-black' : 'bg-white'} `}>
 
 
         <Canvas onCreated={() => setSceneLoaded(true)} camera={{
@@ -283,11 +299,11 @@ const App = () => {
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
             autoRotate={false}
-            autoRotateSpeed={-.8}
+            autoRotateSpeed={-.6}
             enableZoom={true}
             zoomSpeed={0.8}
           />
-          <ambientLight intensity={3} />
+          <ambientLight intensity={dark ? 3 : 3} />
           <directionalLight
             position={[5, 10, 5]}      // Position of the "sun"
             intensity={.75}            // Brightness of the light
@@ -303,7 +319,7 @@ const App = () => {
 
 
           {/* quadrant one components */}
-          <Bay />
+          <Bay dark={dark} />
           <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
           <CapeClubhouse onClick={() => handleSpecificMeshClick('Cape Club House')} />
 
@@ -318,6 +334,9 @@ const App = () => {
 
 
           <BroadneckPark />
+          {homes && (
+            <Houses homes={homes} toggleHomes={toggleHomes} dark={dark} />
+          )}
 
           {/* quadrant four components */}
           <Shops onClick={() => handleSpecificMeshClick('Cape Shopping Center')} />
@@ -331,7 +350,7 @@ const App = () => {
 
           {/* quadrant global components */}
           <Streets />
-          <Floor />
+          <Floor dark={dark} />
 
           {/* cape field and shops spotlight */}
           <spotLight ref={spotLight2} position={[1, 2, 1]} angle={Math.PI / 16} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />

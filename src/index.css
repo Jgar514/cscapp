@@ -22,3 +22,71 @@
     font-size: 100px;
     /* Adjust size as needed */
 }
+
+.strawberry-container {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    /* adjust size as needed */
+    height: 100px;
+}
+
+.strawberry-icon {
+    font-size: 100px;
+    /* adjust size as needed */
+    color: #ff0000;
+    /* Red color for the strawberry */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.strawberry-container {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    /* adjust the size as needed */
+    height: 100px;
+}
+
+.strawberry-icon {
+    font-size: 100px;
+    /* adjust the size as needed */
+    color: pink;
+    /* Start with gray color */
+    position: relative;
+    z-index: 1;
+}
+
+.strawberry-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+    /* Fill color */
+    overflow: hidden;
+}
+
+.strawberry-fill::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    animation: fillUp 3s forwards;
+    /* Animate the fill */
+}
+
+@keyframes fillUp {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}

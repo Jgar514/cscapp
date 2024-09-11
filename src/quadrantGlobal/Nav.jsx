@@ -5,8 +5,14 @@ import { PiHouseSimpleDuotone } from "react-icons/pi";
 import { PiHouseSimpleFill } from "react-icons/pi";
 import { IoIosHelpBuoy } from "react-icons/io";
 import { GiBoatHorizon } from "react-icons/gi";
+import { GiStrawberry } from 'react-icons/gi';
+import '../index.css';
 
 const Nav = ({
+  dark,
+  toggleDark,
+  homes,
+  toggleHomes,
   backgroundColor,
   locationName,
   resetAppState,
@@ -46,47 +52,62 @@ const Nav = ({
   };
 
   return (
-    <div className='w-full h-1/6 md:h-[100px] flex flex-col md:flex-col md:items-start md:justify-start justify-between py-0 z-50 bg-white'>
-      <div className='w-full flex flex-row flex-wrap h-full'>
+    <div
+      className={`w-full h-1/6 md:h-[100px] flex flex-col md:items-start md:justify-start justify-between py-0 z-50 ${dark ? 'bg-black text-white' : 'bg-white text-black'
+        }`}
+    >
+      <div className='w-full flex flex-row md:flex-row flex-wrap h-full '>
         {/* left side */}
-        <div className='flex flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 bg-white'>
-          <div className='text-2xl md:text-4xl font-playfair font-bold text-black flex-col md:items-center h-fit md:h-full w-full md:w-1/2  flex justify-center items-start px-4 cursor-pointer md:justify-start '
-            onClick={handleReset}>
-            <div className='py-2'>
-              Cape St. Claire
-            </div>
-            <div className='text-2xl text-pink bg-gray-50 flex flex-row gap-6 font-bold w-full justify-end pr-12'>
-              <IoIosHelpBuoy />
-              <PiHouseSimpleDuotone />
-              <GiBoatHorizon />
+        <div className='flex flex-row md:flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 '>
 
+          <div className='pt-2 md:py-2  md:w-1/2 w-3/5 justify-center flex text-3xl font-playfair font-bold' onClick={handleReset}>
+            Cape St. Claire
+          </div>
+
+          {/* <h1 className="text-xl" onClick={toggleDark} >{dark ? 'Dark Mode' : 'Light Mode'} </h1> */}
+          <div className='flex flex-col-reverse md:flex-col-reverse  font-bold w-1/2 md:w-1/2 h-full   md:pr-12 items-center md:justify-end md:h-full'>
+            <div className='flex flex-row md:items-center text-2xl text-pink  gap-4 md:h-1/3 bg-gray-50 '>
+              <IoIosHelpBuoy />
+              <PiHouseSimpleDuotone onClick={toggleHomes} />
+              <GiBoatHorizon onClick={toggleDark} />
             </div>
+            {/* <div className="strawberry-container bg-[#ffc0cb]">
+               
+                <GiStrawberry className="strawberry-icon" />
+
+               
+                <div className="strawberry-fill">
+                  <GiStrawberry className="strawberry-icon" />
+                </div>
+              </div> */}
+            <div className='text-xs md:text-4xl font-mono font-bold h-fit md:h-2/3 text-black flex md:items-center justify-center w-full   md:justify-center md:w-fit'>
+              <WeatherCard />
+            </div>
+
           </div>
-          <div className='text-xs md:text-4xl font-mono font-bold h-fit text-black flex md:items-center justify-center w-full md:w-fit'>
-            <WeatherCard />
-          </div>
+
         </div>
 
         <div
-          className='w-1/2 px-2 md:h-3/4 flex justify-center items-center'
-          style={{ backgroundColor: backgroundColor || 'white' }} // Default to white if no color is set
+          className='w-full md:w-1/2 md:px-2 py-2 md:py-0 md:h-5/6 flex justify-center items-center md:items-center h-1/2'
+          style={{ backgroundColor: backgroundColor || '' }} // Default to white if no color is set
         >
 
-          <div className='bg-white w-3/4 h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative'>
-            <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl items-center'>
+          <div className=' w-5/6 md:h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative bg-white'>
+            <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl items-center '>
               {locationName ? (
-                <div className='w-2/4 hover:bg-pink h-auto bg-gray-100 flex justify-center items-center font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                <div className='md:w-2/4 hover:bg-pink h-auto bg-gray-100 flex justify-center items-center  font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
                   <IoIosClose onClick={handleReset} />
                 </div>
               ) : (
-                <div className='w-2/4 h-auto hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                <div className='md:w-2/4 h-auto hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
                   <IoIosSearch />
                 </div>
               )}
             </div>
             <div className='w-3/4 h-full flex items-center pl-4'>
               {locationName ? (
-                <span className='text-xl font-bold'>
+                <span className='md:text-xl  font-bold'>
                   {locationName}
                 </span>
               ) : (
@@ -94,7 +115,7 @@ const Nav = ({
                   type='text'
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className='text-xl font-bold w-full outline-none'
+                  className='md:text-xl font-bold w-full outline-none'
                   placeholder='Search Location'
                 />
               )}
