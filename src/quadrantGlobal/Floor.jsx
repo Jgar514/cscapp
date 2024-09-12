@@ -23,12 +23,13 @@ const Floor = ({ dark, ...props }) => {
     color: '#333333',
     emissive: '#333333',
     emissiveIntensity: 1,
-    roughness: 0,
-    metalness: 0,
+    roughness: 0.8, // Increased roughness for a less shiny appearance
+    metalness: 0,   // Keep it non-metallic
     vertexColors: false,
     transparent: false,
     opacity: 1,
   });
+
 
   useEffect(() => {
     const material = dark ? darkMaterial : lightMaterial;

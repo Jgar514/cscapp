@@ -6,6 +6,8 @@ import { PiHouseSimpleFill } from "react-icons/pi";
 import { IoIosHelpBuoy } from "react-icons/io";
 import { GiBoatHorizon } from "react-icons/gi";
 import { GiStrawberry } from 'react-icons/gi';
+import { GiBuoy } from "react-icons/gi";
+
 import '../index.css';
 
 const Nav = ({
@@ -73,11 +75,31 @@ const Nav = ({
 
           {/* <h1 className="text-xl" onClick={toggleDark} >{dark ? 'Dark Mode' : 'Light Mode'} </h1> */}
           <div className='flex flex-col-reverse md:flex-col-reverse  font-bold w-1/2 md:w-1/2 h-full   md:pr-12 items-center md:justify-end md:h-full'>
-            <div className='flex flex-row md:items-center text-2xl text-pink  gap-4 md:h-1/3 bg-gray-50 '>
-              <IoIosHelpBuoy onClick={() => alert("This icon will eventually show a help component to users")} />
-              <PiHouseSimpleDuotone onClick={toggleHomes} />
-              <GiBoatHorizon onClick={toggleDark} />
+            <div className='flex flex-row md:items-center text-2xl gap-4 md:h-1/3 '>
+              <IoIosHelpBuoy
+                style={{ color: dark ? '#D93B86' : '#D93B86' }} // Dark green when selected, pink in dark mode, #D93B86 in light mode
+                onClick={() => alert("This icon will eventually show a help component to users")}
+              />
+              {
+                homes ? (
+                  <PiHouseSimpleFill
+                    style={{ color: dark ? '#D93B86' : '#D93B86' }} // Pink in dark mode, #D93B86 in light mode
+                    onClick={toggleHomes}
+                  />
+                ) : (
+                  <PiHouseSimpleDuotone
+                    style={{ color: dark ? '#D93B86' : '#D93B86' }} // Pink in dark mode, #D93B86 in light mode
+                    onClick={toggleHomes}
+                  />
+                )
+              }
+
+              <GiBoatHorizon
+                style={{ color: dark ? 'pink' : '#D93B86' }} // Pink in dark mode, #D93B86 in light mode
+                onClick={toggleDark}
+              />
             </div>
+
             {/* <div className="strawberry-container bg-[#ffc0cb]">
                
                 <GiStrawberry className="strawberry-icon" />
@@ -87,7 +109,7 @@ const Nav = ({
                   <GiStrawberry className="strawberry-icon" />
                 </div>
               </div> */}
-            <div className='text-xs md:text-4xl font-mono font-bold h-fit md:h-2/3 text-black flex md:items-center justify-center w-full   md:justify-center md:w-fit'>
+            <div className={`text-xs md:text-4xl font-mono font-bold h-fit md:h-2/3 flex md:items-center justify-center w-full md:justify-center md:w-fit ${dark ? 'text-white' : 'text-black'}`}>
               <WeatherCard />
             </div>
 
@@ -155,17 +177,33 @@ const Nav = ({
             className={`w-full h-1/6 flex justify-end items-center transition-all duration-300 bg-white`}
             style={{ backgroundColor: showMoreInfo ? (backgroundColor || 'white') : 'white' }} // Use backgroundColor or default to blue
           >
-            <div className='w-1/2 bg-white h-full flex flex-col'>
+            <div
+              className={`w-1/2 h-full flex flex-col ${dark ? 'bg-black' : 'bg-white'}`}
+            >
+
               <div className='h-1/2 w-full'>
               </div>
-              <div className='h-1/2 w-full ' style={{ backgroundColor: showMoreInfo ? (backgroundColor || 'blue') : 'white' }}>
+              <div
+                className='h-1/2 w-full'
+                style={{
+                  backgroundColor: showMoreInfo
+                    ? (backgroundColor || 'blue') // Use backgroundColor or default to blue
+                    : (dark ? 'black' : 'white')  // Use black if dark is true, otherwise white
+                }}
+              >
+
               </div>
             </div>
             <div
               className='text-xl font-bold cursor-pointer w-1/2 justify-start'
-              style={{ backgroundColor: showMoreInfo ? (backgroundColor || 'blue') : 'white' }} // Use backgroundColor or default to blue
+              style={{
+                backgroundColor: showMoreInfo
+                  ? (backgroundColor || 'blue') // Use backgroundColor or default to blue
+                  : (dark ? 'black' : 'white')  // If not showing more info, use black if dark is true, otherwise white
+              }}
               onClick={handleMoreInfoClick}
             >
+
               <div className='w-fit px-2 bg-gray-200 border-2 border-black text-black'>
                 {showMoreInfo ? 'Less Info' : 'More Info'} {/* Toggle text */}
               </div>

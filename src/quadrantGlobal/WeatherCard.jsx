@@ -113,7 +113,7 @@ const WeatherCard = () => {
 
   return (
     <div className="flex flex-row md:flex-row items-center justify-center  ">
-      <div className="bg-white  rounded-lg  flex flex-row md:flex-row justify-center items-center">
+      <div className=" rounded-lg  flex flex-row md:flex-row justify-center items-center">
 
 
         <p className="text-xs md:text-lg mt-2 ">
