@@ -299,7 +299,7 @@ const App = () => {
           <OrbitControls
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
-            autoRotate={false}
+            autoRotate={true}
             autoRotateSpeed={-.7}
             enableZoom={true}
             zoomSpeed={0.8}
