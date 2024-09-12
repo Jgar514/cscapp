@@ -30,7 +30,18 @@ const ShopsDetail = () => {
   return (
     <div className="shops-detail h-full overflow-y-auto">
       <div className='flex flex-col w-full'>
-        <div className='h-10 bg-gray-100'></div>
+        <div className='h-10 bg-gray-100'>
+
+          <div className="h-10 bg-gray-100 overflow-hidden relative">
+            <div className="absolute whitespace-nowrap animate-marquee">
+              <span className="mx-4">🚀 Advertise Local Business 🚀</span>
+              <span className="mx-4">🎉 Events offered by shopping center 🎉</span>
+              <span className="mx-4">📦 Deals and Offers 📦</span>
+              <span className="mx-4">💼 Job Postings  💼</span>
+            </div>
+          </div>
+
+        </div>
         <div>
           <h2 className="text-xl font-bold mb-0 p-2">{capeShoppingCenter.name}</h2>
         </div>
