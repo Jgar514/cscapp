@@ -49,9 +49,9 @@ import Houses from './quadrantGlobal/Houses';
 const App = () => {
 
   // initial state and settings
-  const [cameraPosition, setCameraPosition] = useState([0, 1.6, 4]);
+  const [cameraPosition, setCameraPosition] = useState([0, 1.5, 4.0]);
   const [fov, setFov] = useState(45);
-  const [orbitTarget, setOrbitTarget] = useState([0, .00, .4]);
+  const [orbitTarget, setOrbitTarget] = useState([0, 0, .4]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [dark, setDark] = useState(false);
@@ -299,7 +299,7 @@ const App = () => {
           <OrbitControls
             ref={orbitControlsRef} // Attach ref to OrbitControls
             target={orbitTarget}
-            autoRotate={true}
+            autoRotate={false}
             autoRotateSpeed={-.7}
             enableZoom={true}
             zoomSpeed={0.8}
