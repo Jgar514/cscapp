@@ -30,10 +30,10 @@ const quadrant2Data = [
     description: `Don't know what to write yet`,
 
   },
-  {
-    name: "Deep Creek",
-    position: [-1.45, 0.03, -0.75],
-  },
+  // {
+  //   name: "Deep Creek",
+  //   position: [-1.45, 0.03, -0.75],
+  // },
 ];
 
 export default quadrant2Data;

@@ -31,12 +31,12 @@ const quadrant1Data = [
     website: 'https://cscia.org/',
     description: 'The Cape St. Claire Improvement Association manages the affairs of the community, administers the Special Community Benefit District, and publishes the community newsletter the Caper.'
   },
-  {
-    name: 'Bay',
-    position: [1.45, 0.03, -1.25],
-    color: '#4682b4',
-    secondaryColor: '#5f9ea0',
-  }
+  // {
+  //   name: 'Bay',
+  //   position: [1.45, 0.03, -1.25],
+  //   color: '#4682b4',
+  //   secondaryColor: '#5f9ea0',
+  // }
 ];
 
 export default quadrant1Data;

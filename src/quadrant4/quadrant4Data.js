@@ -148,10 +148,10 @@ const quadrant4Data = [
 
   },
 
-  {
-    name: "Little Magothy",
-    position: [1.8, 0.03, 0.25]
-  }
+  // {
+  //   name: "Little Magothy",
+  //   position: [1.8, 0.03, 0.25]
+  // }
 ];
 
 export default quadrant4Data;

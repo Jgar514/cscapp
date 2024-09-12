@@ -51,12 +51,12 @@ In 1996, a large construction and expansion project began to accommodate 9th gra
     website: 'https://www.broadneck.org/',
     description: 'add description from allLocationsData'
   },
-  {
-    name: "Broadneck Park",
-    imageSrc: '',
-    position: [/* Position not specified */],
-    description: 'add description from allLocationsData'
-  },
+  // {
+  //   name: "Broadneck Park",
+  //   imageSrc: '',
+  //   position: [/* Position not specified */],
+  //   description: 'add description from allLocationsData'
+  // },
   {
     name: "St. Andrews By the Bay Church",
     imageSrc: standrewsImage,

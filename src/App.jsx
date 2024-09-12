@@ -57,6 +57,7 @@ const App = () => {
   const [sceneLoaded, setSceneLoaded] = useState(false);
   const [dark, setDark] = useState(false);
   const [homes, setHomes] = useState(false);
+  const [jetVisible, setJetVisible] = useState(false);
 
   const toggleDark = () => {
     setDark(prevDark => !prevDark);
@@ -169,13 +170,24 @@ const App = () => {
   const orbitControlsRef = useRef();
 
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSceneLoaded(true);  // Set scene loaded to true after a timeout (assuming assets have loaded)
-    }, 3000);  // Adjust timeout duration as needed
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setSceneLoaded(true);  // Set scene loaded to true after a timeout (assuming assets have loaded)
+  //   }, 3000);  // Adjust timeout duration as needed
 
-    return () => clearTimeout(timer);  // Clean up timer on unmount
-  }, []);
+  //   return () => clearTimeout(timer);  // Clean up timer on unmount
+  // }, []);
+
+  useEffect(() => {
+    if (sceneLoaded) {
+      // Start the jet animation with a slight delay
+      const timer = setTimeout(() => {
+        setJetVisible(true);
+      }, 1000); // Adjust the delay as needed (1000 ms = 1 second)
+
+      return () => clearTimeout(timer); // Cleanup on unmount
+    }
+  }, [sceneLoaded]);
 
   useEffect(() => {
     if (selectedLocation) {
@@ -263,9 +275,10 @@ const App = () => {
         setSelectedLocation={setSelectedLocation} // Pass the setter function
       />
       {/* Jet Animation */}
-      {sceneLoaded && (
+      {jetVisible && (
         <FaFighterJet size={40} className="fly-jet z-50" color="#074384" />
       )}
+
       <div
         className={`z-40 fixed inset-0 border-t-2 pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
       >
