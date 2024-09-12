@@ -296,7 +296,9 @@ const App = () => {
           fov: fov,
           near: 0.001,
           far: 1300,
-        }}>
+        }}
+
+          gl={{ logarithmicDepthBuffer: true }}>
           <Suspense fallback={<CanvasLoader />}>
             <OrbitControls
               ref={orbitControlsRef} // Attach ref to OrbitControls
