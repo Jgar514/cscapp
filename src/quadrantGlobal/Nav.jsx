@@ -58,6 +58,7 @@ const Nav = ({
     setSelectedLocation(locationName); // Call a prop function to set the selected location
     setSearchTerm(''); // Clear the search term
     setSearchResults([]); // Clear the search results after selecting
+    setShowAllLocations(false);
   };
 
   return (

@@ -8,8 +8,8 @@ const Houses = ({ homes, toggleHomes, dark, ...props }) => {
   const { scene } = useGLTF(housesModelPath);
 
   // Define materials for light mode and dark mode
-  const lightMaterial = new THREE.MeshStandardMaterial({ color: '#000000' }); // Light blue
-  const darkMaterial = new THREE.MeshStandardMaterial({ color: '#000000' });
+  const lightMaterial = new THREE.MeshStandardMaterial({ color: '#2E2E2E' }); // Light blue
+  const darkMaterial = new THREE.MeshStandardMaterial({ color: '#2E2E2E' });
 
   // Apply the correct material to all meshes in the scene based on dark mode
   useEffect(() => {
