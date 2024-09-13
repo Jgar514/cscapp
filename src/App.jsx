@@ -193,34 +193,41 @@ const App = () => {
 
   useEffect(() => {
     if (selectedLocation) {
-      updateCameraAndTarget(selectedLocation);
+      updateCameraAndTarget(selectedLocation, isMobile());
     }
   }, [selectedLocation]);
 
-  const updateCameraAndTarget = (locationName) => {
+  const updateCameraAndTarget = (locationName, isMobile) => {
     const location = allLocations.find(loc => loc.name === locationName);
     if (location) {
       // Check if the values are correctly set
       console.log('Updating to location:', location);
 
+      // Use mobile settings if on a mobile device
+      const target = isMobile ? location.mobileOrbitTarget : location.orbitTarget;
+      const position = isMobile ? location.mobileCameraPosition : location.cameraPosition;
+      const fovValue = isMobile ? location.mobileFov : location.fov;
+
       // Log and set values, or provide default messages
-      if (location.orbitTarget) {
-        setOrbitTarget(location.orbitTarget);
+      if (target) {
+        setOrbitTarget(target);
       } else {
         console.log('Orbit Target is not specified for this location.');
       }
 
-      if (location.cameraPosition) {
-        setCameraPosition(location.cameraPosition);
+      if (position) {
+        setCameraPosition(position);
       } else {
         console.log('Camera Position is not specified for this location.');
       }
 
-      if (location.fov) {
-        setFov(location.fov);
+      if (fovValue) {
+        setFov(fovValue);
       } else {
         console.log('FOV is not specified for this location.');
       }
+
+      // Set the background color
       setBackgroundColor(location.color);
 
       if (orbitControlsRef.current) {
