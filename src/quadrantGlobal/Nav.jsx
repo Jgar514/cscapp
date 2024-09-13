@@ -157,7 +157,7 @@ const Nav = ({
 
           {/* Display search results */}
           {(searchTerm || showAllLocations) && (
-            <div className='absolute top-16 bg-white border border-gray-300 rounded-lg w-2/5 z-10 h-5/6 overflow-y-auto text-black'>
+            <div className='absolute top-28 md:top-16 bg-white border border-gray-300 rounded-lg w-full md:w-2/5 z-10 h-5/6 overflow-y-auto text-black'>
               {(showAllLocations ? allLocations : searchResults).map((location, index) => (
                 <div
                   key={index}

@@ -47,11 +47,13 @@ import DetailOne from './quadrant1/DetailOne';
 import Houses from './quadrantGlobal/Houses';
 import CanvasLoader from './quadrantGlobal/LoadScreen';
 
-const App = () => {
+const isMobile = () => window.innerWidth <= 768;
 
+const App = () => {
+  const initialFov = isMobile() ? 65 : 45;
   // initial state and settings
   const [cameraPosition, setCameraPosition] = useState([0, 1.5, 4.0]);
-  const [fov, setFov] = useState(45);
+  const [fov, setFov] = useState(initialFov);
   const [orbitTarget, setOrbitTarget] = useState([0, 0, .4]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -282,15 +284,15 @@ const App = () => {
       <div
         className={`z-40 fixed inset-0 border-t-2 pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
       >
-        <div className='flex flex-row h-full w-full'>
-          <div className='w-1/2 h-full bg-black'>
+        <div className='flex flex-col md:flex-row h-full w-full'>
+          <div className='w-full h-1/3 md:w-1/2 md:h-full bg-black'>
             {selectedLocationModelPath ? (
               <Model modelPath={selectedLocationModelPath} />
             ) : (
               <div>No model available</div>
             )}
           </div>
-          <div className='w-1/2 h-full bg-black bg-opacity-400 flex flex-col justify-center items-center pt-8'>
+          <div className='w-full h-2/3 md:w-1/2 md:h-full bg-black bg-opacity-400 flex flex-col justify-center items-center md:pt-8'>
             <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg pt-10 overflow-hidden'>
               {renderDetailComponent()}
             </div>

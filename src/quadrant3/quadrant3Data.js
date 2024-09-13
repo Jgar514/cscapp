@@ -20,10 +20,10 @@ In 1984, the school chose the Bruins as its mascot and adopted maroon, grey, and
 
 In 1996, a large construction and expansion project began to accommodate 9th graders at the school. The project was completed in 1998, and Broadneck welcomed its first freshman class. In 2010, a two-story wing was added to the building.`,
   },
-  {
-    name: "Building",
-    position: [-0.9, 0.1, 0.8],
-  },
+  // {
+  //   name: "Building",
+  //   position: [-0.9, 0.1, 0.8],
+  // },
   {
     name: "Broadneck Athletics",
     imageSrc: bhsathleticsImage,
