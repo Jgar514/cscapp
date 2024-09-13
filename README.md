@@ -2,9 +2,13 @@
 
 To structure this project we divided the neighborhood of Cape St. Claire into four quadrants.
 
-![Map of the Project](public/assets/detail-images/map.png)
+<div align="center">
+  <img src="public/assets/detail-images/map.png" alt="Map" width="300px" />
+</div>
+
 
 I then listed key locations that fall into each quadrant which will eventually become it's own React component. I also have a 'Global Quadrant" that appear in all of the quadrants.
+<div align="center">
 
 | Quadrant 1      | Quadrant 2  | Quadrant 3           | Quadrant 4           |
 | --------------- | ----------- | -------------------- | -------------------- |
@@ -16,7 +20,7 @@ I then listed key locations that fall into each quadrant which will eventually b
 |                 |             |                      | Goshen Farm          |
 |                 |             |                      | Little Magothy Park  |
 |                 |             |                      | Little Magothy       |
-
+</div>
 And the additional global assets are:
 - Streets
 - Houses
