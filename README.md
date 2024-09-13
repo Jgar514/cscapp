@@ -30,7 +30,17 @@ As well as global UI components:
 - Model.jsx
 - Nav.jsx
   - WeatherCard.jsx
+- DetailOne.jsx
+- ShopsDetail.jsx
 
+Each location has a details page drop down that is shown through a reusable component that is passed data. Our DetailOne component is used for all locations except for the shopping center which we have a custom one.
+
+```
+if (selectedLocation === 'Cape Shopping Center') {
+      return <ShopsDetail location={selectedLocationData} />;
+    }
+    return <DetailOne location={selectedLocationData} />;
+```
 Each location has it's properties defined in a data file specified for that quadrant. The data file is made up of an array of objects.
 For example:
 ```
