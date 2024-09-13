@@ -2,7 +2,7 @@
 
 To structure this project we divided the neighborhood of Cape St. Claire into four quadrants.
 
-![Map of the Project](assets/detail-images/map.png)
+![Map of the Project](public/assets/detail-images/map.png)
 
 I then listed key locations that fall into each quadrant which will eventually become it's own React component. I also have a 'Global Quadrant" that appear in all of the quadrants.
 
