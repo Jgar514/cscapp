@@ -80,7 +80,7 @@ const quadrant4Data = [
     name: "Guard House",
     imageSrc: guardhouseImage,
     position: [0.9, 0.05, 1.3],
-    cameraPosition: [.2, .5, 1.3],
+    cameraPosition: [.5, .2, 1.3],
     orbitTarget: [0.9, 0.05, 1.3],
     fov: 8,
     mobileCameraPosition: [.2, .5, 1.3],

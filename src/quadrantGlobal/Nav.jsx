@@ -11,6 +11,7 @@ import { GiBuoy } from "react-icons/gi";
 import '../index.css';
 
 const Nav = ({
+  isMobile,
   dark,
   toggleDark,
   homes,
@@ -21,7 +22,7 @@ const Nav = ({
   handleMoreInfoClick,
   showMoreInfo,
   setSelectedLocation,
-  allLocations // Added prop for all locations
+  allLocations,
 }) => {
   const [searchTerm, setSearchTerm] = useState(''); // Local state for search input
   const [searchResults, setSearchResults] = useState([]);
@@ -60,10 +61,11 @@ const Nav = ({
     setSearchResults([]); // Clear the search results after selecting
     setShowAllLocations(false);
   };
-
+  console.log('isMobile:', isMobile);
+  console.log('showMoreInfo:', showMoreInfo);
   return (
     <div
-      className={`w-full h-1/6 md:h-[100px] flex flex-col md:items-start md:justify-start justify-between py-0 z-50 ${dark ? 'bg-black text-white' : 'bg-white text-black'
+      className={`w-full h-[100px] md:h-[100px] flex flex-col md:items-start md:justify-start justify-between py-0 z-50 ${dark ? 'bg-black text-white' : 'bg-white text-black'
         }`}
     >
       <div className='w-full flex flex-row md:flex-row flex-wrap h-full '>
@@ -182,7 +184,15 @@ const Nav = ({
               className={`w-1/2 h-full flex flex-col ${dark ? 'bg-black' : 'bg-white'}`}
             >
 
-              <div className='h-1/2 w-full'>
+              <div
+                className='h-1/2 w-full'
+                style={{
+                  backgroundColor: isMobile
+                    ? (showMoreInfo ? (backgroundColor || 'blue')
+                      : '')
+                    : (showMoreInfo ? (backgroundColor || 'blue') : (dark ? 'black' : 'white'))
+                }}
+              >
               </div>
               <div
                 className='h-1/2 w-full'

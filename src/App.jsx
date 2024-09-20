@@ -1,6 +1,6 @@
 import React, { Suspense, useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Loader } from '@react-three/drei';
+import { OrbitControls, Loader, Stars, Sky } from '@react-three/drei';
 
 // quadrant one imports
 import quadrant1Data from './quadrant1/quadrant1Data';
@@ -47,13 +47,30 @@ import DetailOne from './quadrant1/DetailOne';
 import Houses from './quadrantGlobal/Houses';
 import CanvasLoader from './quadrantGlobal/LoadScreen';
 
-const isMobile = () => window.innerWidth <= 768;
+
 
 const App = () => {
-  const initialFov = isMobile() ? 65 : 45;
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Effect to handle window resizing
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Attach the event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   // initial state and settings
-  const [cameraPosition, setCameraPosition] = useState([0, 1.5, 4.0]);
-  const [fov, setFov] = useState(initialFov);
+  const [cameraPosition, setCameraPosition] = useState(isMobile ? [0, 3.2, 4.0] : [0, 1.5, 4.0]);
+  const [fov, setFov] = useState(isMobile ? 75 : 45);
   const [orbitTarget, setOrbitTarget] = useState([0, 0, .4]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -193,50 +210,31 @@ const App = () => {
 
   useEffect(() => {
     if (selectedLocation) {
-      updateCameraAndTarget(selectedLocation, isMobile());
+      updateCameraAndTarget(selectedLocation, isMobile);
     }
   }, [selectedLocation]);
 
   const updateCameraAndTarget = (locationName, isMobile) => {
     const location = allLocations.find(loc => loc.name === locationName);
     if (location) {
-      // Check if the values are correctly set
-      console.log('Updating to location:', location);
-
-      // Use mobile settings if on a mobile device
       const target = isMobile ? location.mobileOrbitTarget : location.orbitTarget;
       const position = isMobile ? location.mobileCameraPosition : location.cameraPosition;
       const fovValue = isMobile ? location.mobileFov : location.fov;
 
-      // Log and set values, or provide default messages
-      if (target) {
-        setOrbitTarget(target);
-      } else {
-        console.log('Orbit Target is not specified for this location.');
-      }
+      if (target) setOrbitTarget(target);
+      if (position) setCameraPosition(position);
+      if (fovValue) setFov(fovValue);
 
-      if (position) {
-        setCameraPosition(position);
-      } else {
-        console.log('Camera Position is not specified for this location.');
-      }
-
-      if (fovValue) {
-        setFov(fovValue);
-      } else {
-        console.log('FOV is not specified for this location.');
-      }
-
-      // Set the background color
       setBackgroundColor(location.color);
 
       if (orbitControlsRef.current) {
-        orbitControlsRef.current.update(); // Update controls to apply the new settings
+        orbitControlsRef.current.update();
       }
     } else {
       console.error('Location not found:', locationName);
     }
   };
+
 
   useEffect(() => {
     if (orbitControlsRef.current) {
@@ -271,6 +269,7 @@ const App = () => {
     <div className="w-full h-screen relative flex flex-col">
 
       <Nav
+        isMobile={isMobile}
         dark={dark}
         toggleDark={toggleDark}
         homes={homes}
@@ -285,11 +284,14 @@ const App = () => {
       />
       {/* Jet Animation */}
       {jetVisible && (
-        <FaFighterJet size={40} className="fly-jet z-50" color="#074384" />
+
+        <FaFighterJet size={40} className="fly-jet" color="#074384" />
+
       )}
 
+
       <div
-        className={`z-40 fixed inset-0 border-t-2 pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`z-40 bg-white fixed inset-0 border-t-2 pt-[100px] md:pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <div className='flex flex-col md:flex-row h-full w-full'>
           <div className='w-full h-1/3 md:w-1/2 md:h-full bg-black'>
@@ -300,7 +302,7 @@ const App = () => {
             )}
           </div>
           <div className='w-full h-2/3 md:w-1/2 md:h-full bg-black bg-opacity-400 flex flex-col justify-center items-center md:pt-8'>
-            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg pt-10 overflow-hidden'>
+            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg md:pt-10 overflow-hidden p-2'>
               {renderDetailComponent()}
             </div>
           </div>
@@ -329,6 +331,8 @@ const App = () => {
               autoRotateSpeed={-.7}
               enableZoom={true}
               zoomSpeed={0.8}
+              minPolarAngle={Math.PI / 8}
+              maxPolarAngle={Math.PI - Math.PI / 2}
             />
             <ambientLight intensity={dark ? 3 : 3} />
             <directionalLight
@@ -343,8 +347,8 @@ const App = () => {
               shadow-camera-top={10}
               shadow-camera-bottom={-10}
             />
-
-
+            {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
+            {/* <Sky distance={450000} sunPosition={[0, 5, -2]} inclination={0} azimuth={0.25} /> */}
             {/* quadrant one components */}
             <Bay dark={dark} />
             <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />

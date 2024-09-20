@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 const DetailOne = ({ location }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -31,7 +32,7 @@ const DetailOne = ({ location }) => {
 
   return (
     <div className='p-2 h-full w-full overflow-y-auto'>
-      <h1 className="text-2xl font-bold mb-4 p-4">{location.name}</h1>
+      <h1 className="text-2xl font-bold mb-4 md:p-4">{location.name}</h1>
 
       {/* Render the image if imageSrc is available */}
       {location.imageSrc && (

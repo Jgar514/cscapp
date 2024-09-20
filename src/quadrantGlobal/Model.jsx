@@ -1,6 +1,6 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { OrbitControls, PerspectiveCamera, Sky } from '@react-three/drei';
 import { PointLight, SpotLight } from 'three'; // Import PointLight and SpotLight from Three.js
 import GLTFModel from './Loader';
 
@@ -43,8 +43,9 @@ const Model = ({ modelPath }) => {
         distance={3} // Shorter distance
         castShadow
       />
-
+      {/* <Sky distance={450000} sunPosition={[2, .5, 2]} inclination={0} azimuth={0.25} /> */}
       <GLTFModel modelPath={modelPath} />
+
     </Canvas>
   );
 };

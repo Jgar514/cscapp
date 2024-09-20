@@ -1,6 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* index.css */
+
+/* Ensure that no horizontal scrolling occurs */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Allows vertical scrolling if needed */
+}
+
+/* Optional: Set the main container to full width */
+#root {
+    width: 100%;
+}
 
 @keyframes fly-across {
     0% {
@@ -20,8 +37,12 @@
     position: absolute;
     top: 15%;
     font-size: 100px;
+    z-index: 50;
     /* Adjust size as needed */
 }
+
+
+
 
 .strawberry-container {
     display: inline-block;
