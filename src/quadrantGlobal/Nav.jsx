@@ -129,11 +129,11 @@ const Nav = ({
           <div className=' w-5/6 md:h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative bg-white text-black'>
             <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl items-center '>
               {locationName ? (
-                <div className='md:w-2/4 hover:bg-pink h-auto bg-gray-100 flex justify-center items-center  font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
+                <div className='md:w-2/4 md:hover:bg-pink h-auto bg-gray-100 flex justify-center items-center  font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
                   <IoIosClose onClick={handleReset} />
                 </div>
               ) : (
-                <div className='md:w-2/4 h-auto hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black '
+                <div className='md:w-2/4 h-auto md:hover:bg-pink bg-gray-100 flex justify-center items-center font-bold text-3xl text-gray-800 border-2 border-gray-100 rounded-full shadow shadow-black '
                   onClick={handleShowAllClick}
                 >
                   <IoIosSearch />

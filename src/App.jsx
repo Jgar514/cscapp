@@ -70,7 +70,7 @@ const App = () => {
   }, []);
 
   // initial state and settings
-  const [cameraPosition, setCameraPosition] = useState(isMobile ? [0, 3.2, 4.0] : [0, 1.5, 4.0]);
+  const [cameraPosition, setCameraPosition] = useState(isMobile ? [0, 1.8, 4.0] : [0, 1.5, 4.0]);
   const [fov, setFov] = useState(isMobile ? 75 : 45);
   const [orbitTarget, setOrbitTarget] = useState([0, 0, .4]);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -88,12 +88,12 @@ const App = () => {
   };
 
   const resetAppState = () => {
-    setCameraPosition([0, 2, 4]);
-    setFov(45);
+    setCameraPosition(isMobile ? [0, 1.5, 4.0] : [0, 1.5, 4.0])
+    setFov(isMobile ? 75 : 45);
     setShowMoreInfo(false);
     setSelectedLocation(null);
     setBackgroundColor('');
-    setOrbitTarget([0, .00, .4]);
+    setOrbitTarget(isMobile ? [0, 0, 0] : [0, .00, .4]);
   };
 
   // label these
@@ -271,7 +271,7 @@ const App = () => {
         <title>Cape St. Claire 3D: Explore Your Community in Stunning Detail</title>
         <meta name="description" content="Originally designed to be a community of summer cottages, Cape St. Claire is now home to approximately 7,800 year-round residents living in more than 2,300 single-family homes." />
       </Helmet>
-      <div className="w-full h-screen relative flex flex-col">
+      <div className="w-full h-screen relative flex flex-col md:pb-0 pb-24">
 
         <Nav
           isMobile={isMobile}
@@ -317,7 +317,7 @@ const App = () => {
 
 
         {/* Start Scene */}
-        <div className={`flex flex-grow ${dark ? 'bg-black' : 'bg-white'} `}>
+        <div className={`flex flex-grow  md:pb-0 ${dark ? 'bg-black' : 'bg-white'} `}>
 
 
           <Canvas onCreated={() => setSceneLoaded(true)} camera={{
