@@ -17,6 +17,7 @@ module.exports = {
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'],
       },
+    
       colors: {
         holy: {
           50: '#E3F1FD',

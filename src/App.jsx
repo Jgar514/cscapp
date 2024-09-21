@@ -269,7 +269,7 @@ const App = () => {
     <>
       <Helmet>
         <title>Cape St. Claire 3D: Explore Your Community in Stunning Detail</title>
-        <meta name="description" content=" Originally designed to be a community of summer cottages, Cape St. Claire is now home to approximately 7,800 year-round residents living in more than 2,300 single-family homes." />
+        <meta name="description" content="Originally designed to be a community of summer cottages, Cape St. Claire is now home to approximately 7,800 year-round residents living in more than 2,300 single-family homes." />
       </Helmet>
       <div className="w-full h-screen relative flex flex-col">
 
