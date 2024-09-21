@@ -1,6 +1,7 @@
 import React, { Suspense, useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Loader, Stars, Sky } from '@react-three/drei';
+import { Helmet } from 'react-helmet';
 
 // quadrant one imports
 import quadrant1Data from './quadrant1/quadrant1Data';
@@ -265,249 +266,254 @@ const App = () => {
   }, [cameraPosition, fov]);
 
   return (
+    <>
+      <Helmet>
+        <title>Cape St. Claire 3D: Explore Your Community in Stunning Detail</title>
+        <meta name="description" content=" Originally designed to be a community of summer cottages, Cape St. Claire is now home to approximately 7,800 year-round residents living in more than 2,300 single-family homes." />
+      </Helmet>
+      <div className="w-full h-screen relative flex flex-col">
 
-    <div className="w-full h-screen relative flex flex-col">
+        <Nav
+          isMobile={isMobile}
+          dark={dark}
+          toggleDark={toggleDark}
+          homes={homes}
+          toggleHomes={toggleHomes}
+          backgroundColor={backgroundColor}
+          locationName={selectedLocation}
+          resetAppState={resetAppState}
+          handleMoreInfoClick={handleMoreInfoClick}
+          showMoreInfo={showMoreInfo}
+          allLocations={allLocations} // Pass all locations data
+          setSelectedLocation={setSelectedLocation} // Pass the setter function
+        />
+        {/* Jet Animation */}
+        {jetVisible && (
 
-      <Nav
-        isMobile={isMobile}
-        dark={dark}
-        toggleDark={toggleDark}
-        homes={homes}
-        toggleHomes={toggleHomes}
-        backgroundColor={backgroundColor}
-        locationName={selectedLocation}
-        resetAppState={resetAppState}
-        handleMoreInfoClick={handleMoreInfoClick}
-        showMoreInfo={showMoreInfo}
-        allLocations={allLocations} // Pass all locations data
-        setSelectedLocation={setSelectedLocation} // Pass the setter function
-      />
-      {/* Jet Animation */}
-      {jetVisible && (
+          <FaFighterJet size={40} className="fly-jet" color="#074384" />
 
-        <FaFighterJet size={40} className="fly-jet" color="#074384" />
-
-      )}
+        )}
 
 
-      <div
-        className={`z-40 bg-white fixed inset-0 border-t-2 pt-[100px] md:pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
-      >
-        <div className='flex flex-col md:flex-row h-full w-full'>
-          <div className='w-full h-1/3 md:w-1/2 md:h-full bg-black'>
-            {selectedLocationModelPath ? (
-              <Model modelPath={selectedLocationModelPath} />
-            ) : (
-              <div>No model available</div>
-            )}
-          </div>
-          <div className='w-full h-2/3 md:w-1/2 md:h-full bg-black bg-opacity-400 flex flex-col justify-center items-center md:pt-8'>
-            <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg md:pt-10 overflow-hidden p-2'>
-              {renderDetailComponent()}
+        <div
+          className={`z-40 bg-white fixed inset-0 border-t-2 pt-[100px] md:pt-8 transform transition-transform duration-300 ease-in-out ${showMoreInfo ? 'translate-y-0' : '-translate-y-full'}`}
+        >
+          <div className='flex flex-col md:flex-row h-full w-full'>
+            <div className='w-full h-1/3 md:w-1/2 md:h-full bg-black'>
+              {selectedLocationModelPath ? (
+                <Model modelPath={selectedLocationModelPath} />
+              ) : (
+                <div>No model available</div>
+              )}
+            </div>
+            <div className='w-full h-2/3 md:w-1/2 md:h-full bg-black bg-opacity-400 flex flex-col justify-center items-center md:pt-8'>
+              <div className='bg-white rounded-lg h-full w-full shadow-black shadow-lg md:pt-10 overflow-hidden p-2'>
+                {renderDetailComponent()}
+              </div>
             </div>
           </div>
         </div>
+
+
+
+        {/* Start Scene */}
+        <div className={`flex flex-grow ${dark ? 'bg-black' : 'bg-white'} `}>
+
+
+          <Canvas onCreated={() => setSceneLoaded(true)} camera={{
+            position: cameraPosition,
+            fov: fov,
+            near: 0.001,
+            far: 1300,
+          }}
+
+            gl={{ logarithmicDepthBuffer: true }}>
+            <Suspense fallback={<CanvasLoader />}>
+              <OrbitControls
+                ref={orbitControlsRef} // Attach ref to OrbitControls
+                target={orbitTarget}
+                autoRotate={true}
+                autoRotateSpeed={-.7}
+                enableZoom={true}
+                zoomSpeed={0.8}
+                minPolarAngle={Math.PI / 8}
+                maxPolarAngle={Math.PI - Math.PI / 2}
+              />
+              <ambientLight intensity={dark ? 3 : 3} />
+              <directionalLight
+                position={[5, 10, 5]}      // Position of the "sun"
+                intensity={.75}            // Brightness of the light
+                castShadow                 // Enable shadows
+                shadow-mapSize-width={1024} // Shadow resolution (higher for more detail)
+                shadow-mapSize-height={1024}
+                shadow-camera-far={50}      // Maximum distance for shadows
+                shadow-camera-left={-10}    // Camera frustum for shadow
+                shadow-camera-right={10}
+                shadow-camera-top={10}
+                shadow-camera-bottom={-10}
+              />
+              {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
+              {/* <Sky distance={450000} sunPosition={[0, 5, -2]} inclination={0} azimuth={0.25} /> */}
+              {/* quadrant one components */}
+              <Bay dark={dark} />
+              <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
+              <CapeClubhouse onClick={() => handleSpecificMeshClick('Cape Club House')} />
+              <CargoShip />
+
+              {/* quadrant two components */}
+              <DeepCreek dark={dark} />
+              <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
+              <LakeClaire onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} />
+
+              {/* quadrant three components */}
+              <Church onClick={() => handleSpecificMeshClick('St. Andrews By the Bay Church')} />
+              <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
+
+
+              <BroadneckPark />
+              {homes && (
+                <Houses homes={homes} toggleHomes={toggleHomes} dark={dark} />
+              )}
+
+              {/* quadrant four components */}
+              <Shops onClick={() => handleSpecificMeshClick('Cape Shopping Center')} />
+              <CapeField onClick={() => handleSpecificMeshClick('Cape Field')} />
+              <CapeFirehouse onClick={() => handleSpecificMeshClick('Cape Firehouse')} />
+              <CscElem onClick={() => handleSpecificMeshClick('CSC Elementary')} />
+              <GoshenFarm onClick={() => handleSpecificMeshClick('Goshen Farm')} />
+              <GuardHouse onClick={() => handleSpecificMeshClick('Guard House')} />
+              <LittleMagothy dark={dark} />
+              <LittleMagothyPark onClick={() => handleSpecificMeshClick('Little Magothy Park and Kayak Launch')} />
+
+              {/* quadrant global components */}
+              <Streets />
+              <Floor dark={dark} />
+
+              {/* cape field and shops spotlight */}
+              <spotLight ref={spotLight2} position={[1, 2, 1]} angle={Math.PI / 16} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
+              <mesh ref={secondTargetRef} position={[1.0, -.008, 1]}>
+                <boxGeometry args={[.55, 0.06, .55]} />
+                <meshStandardMaterial color="green" transparent opacity={0} />
+              </mesh>
+              <spotLight
+                position={[1, 2, 1]}
+                angle={Math.PI / 16}
+                penumbra={0.2}
+                intensity={5}
+                distance={50}
+                decay={2}
+                castShadow
+                target={secondTargetRef.current}
+              />
+              {/* Third target mesh and spotlight */}
+
+              <spotLight
+                position={[.35, 2, 1]}
+                angle={Math.PI / 9}
+                penumbra={0.2}
+                intensity={5}
+                distance={50}
+                decay={2}
+                castShadow
+                target={thirdTargetRef.current}
+              />
+              {/* csc elementary spotlight */}
+              <spotLight ref={spotLight3} position={[.35, 2, 1]} angle={Math.PI / 9} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+              <mesh ref={thirdTargetRef} position={[.35, 0, 1]}>
+                <boxGeometry args={[.6, 0.08, .6]} />
+                <meshStandardMaterial color="#4682B4" transparent opacity={1} />
+              </mesh>
+
+
+              {/* lake claire spotlight */}
+              <spotLight ref={spotLight4} position={[-.4, 2, -1]} angle={Math.PI / 10} penumbra={0.2} intensity={.5} distance={50} decay={2} castShadow />
+              <mesh ref={fourthTargetRef} position={[-.4, -.055, -1]}>
+                <boxGeometry args={[.6, 0.08, .6]} />
+                <meshStandardMaterial color="#add8e6" transparent opacity={0} />
+              </mesh>
+              <spotLight
+                position={[-.4, 2, -1]}
+                angle={Math.PI / 8}
+                penumbra={0.2}
+                intensity={2}
+                distance={50}
+                decay={2}
+                castShadow
+                target={fourthTargetRef.current}
+              />
+              {/* main beach and cape club house spotlight */}
+              <spotLight ref={spotLight5} position={[1.7, 2, -.35]} angle={Math.PI / 6} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+              <mesh ref={fifthTargetRef} position={[1.7, -.055, -.35]}>
+                <boxGeometry args={[.8, 0.08, .8]} />
+                <meshStandardMaterial color="#add8e6" transparent opacity={0} />
+              </mesh>
+              <spotLight
+                position={[1.7, 2, -.35]}
+                angle={Math.PI / 6}
+                penumbra={0.2}
+                intensity={2}
+                distance={50}
+                decay={2}
+                castShadow
+                target={fifthTargetRef.current}
+              />
+              {/* Church spotlight */}
+
+              <spotLight ref={spotLight6} position={[-.3, 2, 2.2]} angle={Math.PI / 16} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+              <mesh ref={sixthTargetRef} position={[-.25, .04, 2.1]} rotation={[Math.PI / 1, -.2, .1]}>
+                <boxGeometry args={[.3, 0.08, .45]} />
+                <meshStandardMaterial color="#ffd700" transparent opacity={0} />
+              </mesh>
+
+              <spotLight
+                position={[-.3, 2, 2.2]}
+                angle={Math.PI / 16}
+                penumbra={0.2}
+                intensity={2}
+                distance={50}
+                decay={2}
+                castShadow
+                target={sixthTargetRef.current}
+              />
+
+              {/* goshen farm */}
+              <spotLight ref={spotLight7} position={[.37, 2, 1.3]} angle={Math.PI / 20} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+              <mesh ref={seventhTargetRef} position={[.37, 0.06, 1.3]}>
+                <boxGeometry args={[.16, 0.010, .20]} />
+                <meshStandardMaterial color="#654321" transparent opacity={0} />
+              </mesh>
+              <spotLight
+                position={[.37, 2, 1.3]}
+                angle={Math.PI / 30}
+                penumbra={0.2}
+                intensity={4}
+                distance={50}
+                decay={2}
+                castShadow
+                target={seventhTargetRef.current}
+              />
+              {/* boat ramp spotlight */}
+              <spotLight ref={spotLight8} position={[-1.7, 2, -.45]} angle={Math.PI / 15} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
+              <mesh ref={eigthTargetRef} position={[-1.7, -.04, -.45]}>
+                <boxGeometry args={[.3, 0.08, .3]} />
+                <meshStandardMaterial color="#add8e6" transparent opacity={0} />
+              </mesh>
+              <spotLight
+                position={[-1.7, 2, -.45]}
+                angle={Math.PI / 15}
+                penumbra={0.2}
+                intensity={2}
+                distance={50}
+                decay={2}
+                castShadow
+                target={eigthTargetRef.current}
+              />
+            </Suspense >
+          </Canvas>
+
+        </div>
       </div>
-
-
-
-      {/* Start Scene */}
-      <div className={`flex flex-grow ${dark ? 'bg-black' : 'bg-white'} `}>
-
-
-        <Canvas onCreated={() => setSceneLoaded(true)} camera={{
-          position: cameraPosition,
-          fov: fov,
-          near: 0.001,
-          far: 1300,
-        }}
-
-          gl={{ logarithmicDepthBuffer: true }}>
-          <Suspense fallback={<CanvasLoader />}>
-            <OrbitControls
-              ref={orbitControlsRef} // Attach ref to OrbitControls
-              target={orbitTarget}
-              autoRotate={true}
-              autoRotateSpeed={-.7}
-              enableZoom={true}
-              zoomSpeed={0.8}
-              minPolarAngle={Math.PI / 8}
-              maxPolarAngle={Math.PI - Math.PI / 2}
-            />
-            <ambientLight intensity={dark ? 3 : 3} />
-            <directionalLight
-              position={[5, 10, 5]}      // Position of the "sun"
-              intensity={.75}            // Brightness of the light
-              castShadow                 // Enable shadows
-              shadow-mapSize-width={1024} // Shadow resolution (higher for more detail)
-              shadow-mapSize-height={1024}
-              shadow-camera-far={50}      // Maximum distance for shadows
-              shadow-camera-left={-10}    // Camera frustum for shadow
-              shadow-camera-right={10}
-              shadow-camera-top={10}
-              shadow-camera-bottom={-10}
-            />
-            {/* <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade /> */}
-            {/* <Sky distance={450000} sunPosition={[0, 5, -2]} inclination={0} azimuth={0.25} /> */}
-            {/* quadrant one components */}
-            <Bay dark={dark} />
-            <MainBeach onClick={() => handleSpecificMeshClick('Main Beach')} />
-            <CapeClubhouse onClick={() => handleSpecificMeshClick('Cape Club House')} />
-            <CargoShip />
-
-            {/* quadrant two components */}
-            <DeepCreek dark={dark} />
-            <BoatRamp onClick={() => handleSpecificMeshClick('Boat Ramp')} />
-            <LakeClaire onClick={() => handleSpecificMeshClick("Lake Claire Lake, Beach and Fishing Pier")} />
-
-            {/* quadrant three components */}
-            <Church onClick={() => handleSpecificMeshClick('St. Andrews By the Bay Church')} />
-            <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
-
-
-            <BroadneckPark />
-            {homes && (
-              <Houses homes={homes} toggleHomes={toggleHomes} dark={dark} />
-            )}
-
-            {/* quadrant four components */}
-            <Shops onClick={() => handleSpecificMeshClick('Cape Shopping Center')} />
-            <CapeField onClick={() => handleSpecificMeshClick('Cape Field')} />
-            <CapeFirehouse onClick={() => handleSpecificMeshClick('Cape Firehouse')} />
-            <CscElem onClick={() => handleSpecificMeshClick('CSC Elementary')} />
-            <GoshenFarm onClick={() => handleSpecificMeshClick('Goshen Farm')} />
-            <GuardHouse onClick={() => handleSpecificMeshClick('Guard House')} />
-            <LittleMagothy dark={dark} />
-            <LittleMagothyPark onClick={() => handleSpecificMeshClick('Little Magothy Park and Kayak Launch')} />
-
-            {/* quadrant global components */}
-            <Streets />
-            <Floor dark={dark} />
-
-            {/* cape field and shops spotlight */}
-            <spotLight ref={spotLight2} position={[1, 2, 1]} angle={Math.PI / 16} penumbra={0.2} intensity={5} distance={50} decay={2} castShadow />
-            <mesh ref={secondTargetRef} position={[1.0, -.008, 1]}>
-              <boxGeometry args={[.55, 0.06, .55]} />
-              <meshStandardMaterial color="green" transparent opacity={0} />
-            </mesh>
-            <spotLight
-              position={[1, 2, 1]}
-              angle={Math.PI / 16}
-              penumbra={0.2}
-              intensity={5}
-              distance={50}
-              decay={2}
-              castShadow
-              target={secondTargetRef.current}
-            />
-            {/* Third target mesh and spotlight */}
-
-            <spotLight
-              position={[.35, 2, 1]}
-              angle={Math.PI / 9}
-              penumbra={0.2}
-              intensity={5}
-              distance={50}
-              decay={2}
-              castShadow
-              target={thirdTargetRef.current}
-            />
-            {/* csc elementary spotlight */}
-            <spotLight ref={spotLight3} position={[.35, 2, 1]} angle={Math.PI / 9} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
-            <mesh ref={thirdTargetRef} position={[.35, 0, 1]}>
-              <boxGeometry args={[.6, 0.08, .6]} />
-              <meshStandardMaterial color="#4682B4" transparent opacity={1} />
-            </mesh>
-
-
-            {/* lake claire spotlight */}
-            <spotLight ref={spotLight4} position={[-.4, 2, -1]} angle={Math.PI / 10} penumbra={0.2} intensity={.5} distance={50} decay={2} castShadow />
-            <mesh ref={fourthTargetRef} position={[-.4, -.055, -1]}>
-              <boxGeometry args={[.6, 0.08, .6]} />
-              <meshStandardMaterial color="#add8e6" transparent opacity={0} />
-            </mesh>
-            <spotLight
-              position={[-.4, 2, -1]}
-              angle={Math.PI / 8}
-              penumbra={0.2}
-              intensity={2}
-              distance={50}
-              decay={2}
-              castShadow
-              target={fourthTargetRef.current}
-            />
-            {/* main beach and cape club house spotlight */}
-            <spotLight ref={spotLight5} position={[1.7, 2, -.35]} angle={Math.PI / 6} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
-            <mesh ref={fifthTargetRef} position={[1.7, -.055, -.35]}>
-              <boxGeometry args={[.8, 0.08, .8]} />
-              <meshStandardMaterial color="#add8e6" transparent opacity={0} />
-            </mesh>
-            <spotLight
-              position={[1.7, 2, -.35]}
-              angle={Math.PI / 6}
-              penumbra={0.2}
-              intensity={2}
-              distance={50}
-              decay={2}
-              castShadow
-              target={fifthTargetRef.current}
-            />
-            {/* Church spotlight */}
-
-            <spotLight ref={spotLight6} position={[-.3, 2, 2.2]} angle={Math.PI / 16} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
-            <mesh ref={sixthTargetRef} position={[-.25, .04, 2.1]} rotation={[Math.PI / 1, -.2, .1]}>
-              <boxGeometry args={[.3, 0.08, .45]} />
-              <meshStandardMaterial color="#ffd700" transparent opacity={0} />
-            </mesh>
-
-            <spotLight
-              position={[-.3, 2, 2.2]}
-              angle={Math.PI / 16}
-              penumbra={0.2}
-              intensity={2}
-              distance={50}
-              decay={2}
-              castShadow
-              target={sixthTargetRef.current}
-            />
-
-            {/* goshen farm */}
-            <spotLight ref={spotLight7} position={[.37, 2, 1.3]} angle={Math.PI / 20} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
-            <mesh ref={seventhTargetRef} position={[.37, 0.06, 1.3]}>
-              <boxGeometry args={[.16, 0.010, .20]} />
-              <meshStandardMaterial color="#654321" transparent opacity={0} />
-            </mesh>
-            <spotLight
-              position={[.37, 2, 1.3]}
-              angle={Math.PI / 30}
-              penumbra={0.2}
-              intensity={4}
-              distance={50}
-              decay={2}
-              castShadow
-              target={seventhTargetRef.current}
-            />
-            {/* boat ramp spotlight */}
-            <spotLight ref={spotLight8} position={[-1.7, 2, -.45]} angle={Math.PI / 15} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
-            <mesh ref={eigthTargetRef} position={[-1.7, -.04, -.45]}>
-              <boxGeometry args={[.3, 0.08, .3]} />
-              <meshStandardMaterial color="#add8e6" transparent opacity={0} />
-            </mesh>
-            <spotLight
-              position={[-1.7, 2, -.45]}
-              angle={Math.PI / 15}
-              penumbra={0.2}
-              intensity={2}
-              distance={50}
-              decay={2}
-              castShadow
-              target={eigthTargetRef.current}
-            />
-          </Suspense >
-        </Canvas>
-
-      </div>
-    </div>
+    </>
   );
 };
 
