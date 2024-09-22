@@ -47,6 +47,7 @@ import Model from "./quadrantGlobal/Model";
 import DetailOne from './quadrant1/DetailOne';
 import Houses from './quadrantGlobal/Houses';
 import CanvasLoader from './quadrantGlobal/LoadScreen';
+import HelpBox from './quadrantGlobal/HelpBox';
 
 
 
@@ -101,6 +102,16 @@ const App = () => {
   const [showMoreInfo, setShowMoreInfo] = useState(false);
   const [isInteracting, setIsInteracting] = useState(false);
   const [spotlightsInitialized, setSpotlightsInitialized] = useState(false);
+
+  const [showHelp, setShowHelp] = useState(false);
+
+  const handleHelpClose = () => {
+    setShowHelp(false);
+  };
+
+  const triggerHelp = () => {
+    setShowHelp(true);
+  };
 
   // targets for spotlight
   const targetRef = useRef();
@@ -285,8 +296,12 @@ const App = () => {
           handleMoreInfoClick={handleMoreInfoClick}
           showMoreInfo={showMoreInfo}
           allLocations={allLocations} // Pass all locations data
-          setSelectedLocation={setSelectedLocation} // Pass the setter function
+          setSelectedLocation={setSelectedLocation}
+          triggerHelp={triggerHelp}
         />
+        {showHelp && (
+          <HelpBox message="This is an Help message!" onClose={handleHelpClose} />
+        )}
         {/* Jet Animation */}
         {jetVisible && (
 

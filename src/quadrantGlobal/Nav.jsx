@@ -23,6 +23,7 @@ const Nav = ({
   showMoreInfo,
   setSelectedLocation,
   allLocations,
+  triggerHelp,
 }) => {
   const [searchTerm, setSearchTerm] = useState(''); // Local state for search input
   const [searchResults, setSearchResults] = useState([]);
@@ -81,7 +82,7 @@ const Nav = ({
             <div className='flex flex-row md:items-center text-2xl gap-4 md:h-1/3 '>
               <IoIosHelpBuoy
                 style={{ color: dark ? '#D93B86' : '#D93B86' }} // Dark green when selected, pink in dark mode, #D93B86 in light mode
-                onClick={() => alert("This icon will eventually show a help component to users")}
+                onClick={triggerHelp}
               />
               {
                 homes ? (
