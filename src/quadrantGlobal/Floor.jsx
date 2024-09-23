@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { MeshStandardMaterial } from 'three';
-import floorModelPath from '/assets/floorbg.glb';
+import floorModelPath from '/assets/intfloor.glb';
 
 const Floor = ({ dark, ...props }) => {
   const groupRef = useRef();
