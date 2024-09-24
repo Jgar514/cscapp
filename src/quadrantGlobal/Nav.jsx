@@ -66,12 +66,12 @@ const Nav = ({
   console.log('showMoreInfo:', showMoreInfo);
   return (
     <div
-      className={`w-full h-[100px] md:h-[100px] flex flex-col md:items-start md:justify-start justify-between py-0 z-50 ${dark ? 'bg-black text-white' : 'bg-white text-black'
+      className={`w-full h-[120px] md:h-[100px] flex flex-col md:items-start md:justify-start justify-between  py-0 z-50 ${dark ? 'bg-black text-white' : 'bg-white text-black'
         }`}
     >
-      <div className='w-full flex flex-row md:flex-row flex-wrap h-full '>
+      <div className='w-full flex flex-row md:flex-row flex-wrap h-full  '>
         {/* left side */}
-        <div className='flex flex-row md:flex-row w-full md:w-1/2 md:gap-4 h-1/2 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 '>
+        <div className='flex flex-row md:flex-row w-full md:w-1/2 md:gap-4 h-3/5 md:h-5/6 items-center md:items-center justify-start md:justify-start px-2 md:px-0 md:pl-4 '>
 
           <div className='pt-2 md:py-2  md:w-1/2 w-3/5 justify-center flex text-2xl md:text-4xl font-playfair font-bold' onClick={handleReset}>
             Cape St. Claire
@@ -79,7 +79,7 @@ const Nav = ({
 
           {/* <h1 className="text-xl" onClick={toggleDark} >{dark ? 'Dark Mode' : 'Light Mode'} </h1> */}
           <div className='flex flex-col-reverse md:flex-col-reverse  font-bold w-1/2 md:w-1/2 h-full   md:pr-12 items-center md:justify-end md:h-full'>
-            <div className='flex flex-row md:items-center text-2xl gap-4 md:h-1/3 '>
+            <div className='flex flex-row md:items-center text-2xl gap-4 md:h-1/3 pb-2 md:pb-0 '>
               <IoIosHelpBuoy
                 style={{ color: dark ? '#D93B86' : '#D93B86' }} // Dark green when selected, pink in dark mode, #D93B86 in light mode
                 onClick={triggerHelp}
@@ -128,7 +128,7 @@ const Nav = ({
         >
           {/* This is the actual search bar */}
           <div className=' w-5/6 md:h-3/5 flex flex-row justify-start items-center border-2 border-black rounded-lg relative bg-white text-black'>
-            <div className='w-1/6 h-full flex bg-gray-100 text-white justify-center text-2xl items-center '>
+            <div className='w-1/6 h-full flex  text-white justify-center text-2xl items-center '>
               {locationName ? (
                 <div className='md:w-2/4 md:hover:bg-pink h-auto bg-gray-100 flex justify-center items-center  font-bold text-3xl text-red-800 border-2 border-gray-100 rounded-full shadow shadow-black'>
                   <IoIosClose onClick={handleReset} />
@@ -160,7 +160,7 @@ const Nav = ({
 
           {/* Display search results */}
           {(searchTerm || showAllLocations) && (
-            <div className='absolute top-28 md:top-16 bg-white border border-gray-300 rounded-lg w-full md:w-2/5 z-10 h-5/6 overflow-y-auto text-black'>
+            <div className='absolute top-28 md:top-16 bg-white border border-gray-300 rounded-lg w-full md:w-2/5 z-10 h-4/6 md:h-5/6 overflow-y-auto text-black'>
               {(showAllLocations ? allLocations : searchResults).map((location, index) => (
                 <div
                   key={index}

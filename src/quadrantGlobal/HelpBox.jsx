@@ -5,7 +5,7 @@ import { GiBoatHorizon } from "react-icons/gi";
 import { IoIosSearch, IoIosClose } from 'react-icons/io';
 const HelpBox = ({ message, onClose }) => {
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 z-50 w-1/3 flex flex-col">
+    <div className="fixed top-1/2 left-1/2  md:top-1/2 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 z-50  w-full md:w-1/3 flex flex-col">
       <div className="flex justify-between items-center">
         <h2 className="font-semibold text-lg">Help</h2>
         <button onClick={onClose} className="text-gray-500 hover:text-gray-800 focus:outline-none">
@@ -46,7 +46,7 @@ const HelpBox = ({ message, onClose }) => {
       <div className="flex items-center space-x-2 mt-4">
         <IoIosHelpBuoy className="flex-shrink-0" />
         <p className="text-gray-700 flex-grow">
-         When finished viewing the location click on the
+          When finished viewing the location click on the
           <span className="inline-flex items-center"> ( <IoIosClose /> ) </span>
           to go back to main view.
         </p>
