@@ -17,7 +17,7 @@ const quadrant2Data = [
     secondaryColor: '#ff8c00',
     modelPath: modelPaths.lakeClaire,
     description: 'Lake Claire is a picturesque lake offering stunning views and a variety of outdoor activities such as fishing and boating.',
-    website: 'https://cscia.org/cscia-services/boat-slips-information/'
+    website: 'https://cscia.org/cscia-services/beaches/'
   },
   {
     name: "Boat Ramp",

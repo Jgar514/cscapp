@@ -454,7 +454,7 @@ const App = () => {
               <spotLight ref={spotLight3} position={[.35, 2, 1]} angle={Math.PI / 9} penumbra={0.2} intensity={2} distance={50} decay={2} castShadow />
               <mesh ref={thirdTargetRef} position={[.35, 0, 1]}>
                 <boxGeometry args={[.6, 0.08, .6]} />
-                <meshStandardMaterial color="#4682B4" transparent opacity={1} />
+                <meshStandardMaterial color="#4682B4" transparent opacity={0} />
               </mesh>
 
 

@@ -15,7 +15,7 @@ const ImagePopup = ({ show, onClose, imageUrl, altText }) => {
         <div className="self-end w-full flex justify-between items-center">
           {/* Text on the left */}
           <span className="text-lg font-semibold text-gray-700">
-            Who who... sunk their boat?!
+            Who who... sank their boat?!
           </span>
 
           {/* Close button on the right */}
