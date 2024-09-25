@@ -22,6 +22,7 @@ import quadrant3Data from './quadrant3/quadrant3Data';
 import Broadneck from './quadrant3/Broadneck';
 import BroadneckPark from './quadrant3/BroadneckPark';
 import Church from './quadrant3/Church';
+import OwlBoat from './quadrant3/OwlBoat';
 // import BhsLib from './quadrant3/BhsLib';
 // import BhsAthletics from './quadrant3/BhsAthletics';
 
@@ -48,6 +49,7 @@ import DetailOne from './quadrant1/DetailOne';
 import Houses from './quadrantGlobal/Houses';
 import CanvasLoader from './quadrantGlobal/LoadScreen';
 import HelpBox from './quadrantGlobal/HelpBox';
+import ImagePopup from './quadrantGlobal/ImagePopup';
 
 
 
@@ -79,6 +81,16 @@ const App = () => {
   const [dark, setDark] = useState(false);
   const [homes, setHomes] = useState(false);
   const [jetVisible, setJetVisible] = useState(false);
+  const [showImagePopup, setShowImagePopup] = useState(false);
+
+  // Function to toggle the image popup
+  const handleShowImagePopup = () => {
+    setShowImagePopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowImagePopup(false);
+  };
 
   const toggleDark = () => {
     setDark(prevDark => !prevDark);
@@ -329,7 +341,12 @@ const App = () => {
           </div>
         </div>
 
-
+        <ImagePopup
+          show={showImagePopup}
+          onClose={handleClosePopup}
+          imageUrl="/assets/owlboat.png"
+          altText="Sample Image"
+        />
 
         {/* Start Scene */}
         <div className={`flex flex-grow  md:pb-0 ${dark ? 'bg-black' : 'bg-white'} `}>
@@ -383,6 +400,7 @@ const App = () => {
               {/* quadrant three components */}
               <Church onClick={() => handleSpecificMeshClick('St. Andrews By the Bay Church')} />
               <Broadneck onClick={() => handleSpecificMeshClick('Broadneck High School')} />
+              <OwlBoat onClick={handleShowImagePopup} />
 
 
               <BroadneckPark />
